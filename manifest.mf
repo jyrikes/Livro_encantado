@@ -10,9 +10,9 @@ O livro do tempo repousava sobre a proteção da árvore sagrada , quando suas p
 do sul ....
 
 2020 do tempo comum ....
-     O despertador toca 
+     O despertador toca fff
      Acordar ?
-     se sim ______
+     se sim ______    
             adicionar 5 pontos ao contador 
             continua história normal 
      se não_____
