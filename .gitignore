@@ -25,3 +25,4 @@ hs_err_pid*
 #arquivos de uso 
 *.mf
 *.xml
+/dist/

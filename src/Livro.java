@@ -1,7 +1,10 @@
 
+
 import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.swing.JFrame;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -51,9 +54,17 @@ public class Livro extends javax.swing.JFrame {
     public B1 btenviar = new B1();
     public B1 btrep = new B1();
     
-    public Livro() throws InterruptedException {
+    
+
+    
+    
+    public Livro() throws InterruptedException  {
          initComponents();
+         
+         nome1.setText(p1.getNome());
+         nome2.setText(p2.getNome());
             inicio();
+            
      
     }
 
@@ -75,10 +86,20 @@ public class Livro extends javax.swing.JFrame {
         enviar = new javax.swing.JButton();
         responder = new javax.swing.JButton();
         reiniciar = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        energiaBar = new javax.swing.JLabel();
+        vidaBar = new javax.swing.JLabel();
+        vida = new javax.swing.JLabel();
+        energia = new javax.swing.JLabel();
+        nome1 = new javax.swing.JLabel();
+        vida2 = new javax.swing.JLabel();
+        energia2 = new javax.swing.JLabel();
+        energiaBar2 = new javax.swing.JLabel();
+        vidaBar2 = new javax.swing.JLabel();
+        nome2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
-        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(50, 46, 46));
 
@@ -176,55 +197,169 @@ public class Livro extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 799, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ler)
+                        .addComponent(ler, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(responder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(enviar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(enviar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(responder, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(sim, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nao)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(reiniciar)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                        .addComponent(reiniciar)
+                        .addGap(63, 63, 63))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 929, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
-                .addGap(21, 21, 21)
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ler, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(enviar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(responder)
-                            .addGap(12, 12, 12))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(sim, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(reiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nao, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(ler, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(sim, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(reiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(nao, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(enviar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(responder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(39, 39, 39))))
+        );
+
+        jPanel3.setBackground(new java.awt.Color(1, 3, 42));
+
+        energiaBar.setFont(new java.awt.Font("SansSerif", 0, 48)); // NOI18N
+        energiaBar.setForeground(new java.awt.Color(255, 255, 0));
+
+        vidaBar.setFont(new java.awt.Font("SansSerif", 0, 48)); // NOI18N
+        vidaBar.setForeground(new java.awt.Color(255, 0, 0));
+
+        vida.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        vida.setForeground(new java.awt.Color(255, 255, 255));
+        vida.setText("VIDA");
+
+        energia.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        energia.setForeground(new java.awt.Color(255, 255, 255));
+        energia.setText("ENERGIA");
+
+        nome1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        nome1.setForeground(new java.awt.Color(51, 0, 204));
+        nome1.setText("VOCÊ");
+
+        vida2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        vida2.setForeground(new java.awt.Color(255, 255, 255));
+        vida2.setText("VIDA");
+
+        energia2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        energia2.setForeground(new java.awt.Color(255, 255, 255));
+        energia2.setText("ENERGIA");
+
+        energiaBar2.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
+        energiaBar2.setForeground(new java.awt.Color(255, 255, 255));
+
+        vidaBar2.setFont(new java.awt.Font("SansSerif", 0, 48)); // NOI18N
+        vidaBar2.setForeground(new java.awt.Color(255, 255, 255));
+
+        nome2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        nome2.setForeground(new java.awt.Color(51, 0, 204));
+        nome2.setText("VOCÊ");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(vida, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(energia))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(vidaBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(energiaBar, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(vida2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(energia2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(energiaBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nome2)
+                                    .addComponent(vidaBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(145, 145, 145)
+                .addComponent(nome1)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addComponent(nome1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(vida, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(vidaBar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(energia, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(energiaBar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nome2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(vida2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vidaBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(energia2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(energiaBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(374, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 4, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -252,7 +387,7 @@ public class Livro extends javax.swing.JFrame {
                          esquisito na mesa de jantar .
                          
                          Você olha para fora do quarto e vê um livro estranho 
-                         você vai pegar o livro ?""");
+                         você vai pegar o livro ? """);
             
            
         texto.append("╔══╗ \n" +
@@ -265,9 +400,17 @@ public class Livro extends javax.swing.JFrame {
 
         }
         if(estado == 2){
+               p1.setEnergia(p1.getEnergia()-1);
+               displayEnergia(p1.getEnergia(), 1);
+               System.out.println(p1.getEnergia());
+               
             int estadoTexto = btenviar.getEstado();
             texto.append("""
+                         \n
                          
+                         
+                         Você ainda está sonolento por isso perdeu 1 ponto de energia 
+                         para pegar o livro !!
                          
                          ..............................................
                      https://i.ytimg.com/vi/xB_O0Adpm80/maxresdefault.jpg
@@ -275,12 +418,21 @@ public class Livro extends javax.swing.JFrame {
                          Você toca no livro e no mesmo instante 
                          
                      o livro se abre no país em que as pessoas viraram pedras
-                               por causa de um vulcão. Qual o país ? Pergunta um 
-                        homem em pé de frente a janela .
-                         Você responde que é na 
+                               por causa de um vulcão.
+                         -Qual o país ? 
+                         Pergunta um homem em pé de frente a janela .
+                         
+                         Qual sua resposta ?
                          .....
                          
                                """);
+            minhaEnergia = p1.getEnergia();
+            System.out.println(minhaEnergia);
+            if(minhaEnergia == 0){
+                    
+                   finais(0);
+                }
+            
             
                
           
@@ -289,6 +441,9 @@ public class Livro extends javax.swing.JFrame {
                
            
             
+        }
+        if (estado == 3){
+            luta(1);
         }
         
         
@@ -308,23 +463,42 @@ public class Livro extends javax.swing.JFrame {
 
     private void responderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_responderActionPerformed
         // TODO add your handling code here:
-          int estado = btrep.getEstado();
+        int estado = btrep.getEstado();
         btrep.setEstado(estado+1);
-        
-         if(lido.equals("itália")){
-             contagem +=5;
-                finais(contagem);
-           }
-         if(lido.equals("sócrates")){
-             contagem+= 2;
-             finais(contagem);
-         }
-         if(estado == 1){
-            if (!lido.equals("sócrates") || !lido.equals("itália")){
-             
-             contagem+=1;
-             finais(contagem);
+        System.out.println(lido);
+        String leitura = lido;
+        String respostas [] = {"idade","itália","sócrates","alfabeto"};
+        System.out.println(procura(respostas, lido));
+        if(procura(respostas, leitura)){
+
+                
+            if(leitura.equals("idade")){
+                p2.setVida(p2.getVida()-1);
+                displayVida(p2.getId(),p2.getId());
+                texto.append("""
+                        VOCÊ ACERTOU A PRIMEIRA PERGUNTA !!
+                        """);
+                        luta(2);
             }
+            if(leitura.equals("alfabeto")){
+                p2.setVida(p2.getVida()-1);
+                displayVida(p2.getId(),p2.getId());
+                finais(10);
+            }
+            
+            if(leitura.equals("itália")){
+                contagem +=5;
+                    finais(contagem);
+            }
+            
+            if(leitura.equals("sócrates")){
+                contagem+= 2;
+                finais(contagem);
+            }
+        }
+
+        else{
+             errado();
          }
     }//GEN-LAST:event_responderActionPerformed
 
@@ -335,11 +509,17 @@ public class Livro extends javax.swing.JFrame {
     private void lerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_lerActionPerformed
-
+                                                        
     private void naoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_naoActionPerformed
         // TODO add your handling code here:
         int estado = btsim.getEstado();
         btsim.setEstado(estado+1);
+                
+        int estado2 = btnao.getEstado();
+        btnao.setEstado(estado2+1);
+        
+        System.out.println(estado2);
+        btnao.setEstado(estado2+1);
         if(estado == 1){
             texto.append("""
                          
@@ -359,19 +539,45 @@ public class Livro extends javax.swing.JFrame {
             contagem+=3;
             finais(contagem);
         }
+        if (estado2 == 2){
+            p1.setVida(p1.getVida()-1);
+            displayVida(p1.getVida(),p1.getId());
+            texto.append("\n▒▒▒▒▒▒▒▒▒▒▒▄▄▄▄░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+"▒▒▒▒▒▒▒▒▒▄██████▒▒▒▒▒▄▄▄█▄▒▒▒▒▒▒▒▒▒▒\n" +
+"▒▒▒▒▒▒▒▄██▀░░▀██▄▒▒▒▒████████▄▒▒▒▒▒▒\n" +
+"▒▒▒▒▒▒███░░░░░░██▒▒▒▒▒▒█▀▀▀▀▀██▄▄▒▒▒\n" +
+"▒▒▒▒▒▄██▌░░░░░░░██▒▒▒▒▐▌▒▒▒▒▒▒▒▒▀█▄▒\n" +
+"▒▒▒▒▒███░░▐█░█▌░██▒▒▒▒█▌▒▒▒▒▒▒▒▒▒▒▀▌\n" +
+"▒▒▒▒████░▐█▌░▐█▌██▒▒▒██▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+"▒▒▒▐████░▐░░░░░▌██▒▒▒█▌▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+"▒▒▒▒████░░░▄█░░░██▒▒▐█▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+"▒▒▒▒████░░░██░░██▌▒▒█▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+"▒▒▒▒████▌░▐█░░███▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+"▒▒▒▒▐████░░▌░███▒▒▒██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+"▒▒▒▒▒████░░░███▒▒▒▒█▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+"▒▒▒██████▌░████▒▒▒██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+"▒▐████████████▒▒███▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+"▒█████████████▄████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+"██████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+"██████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+"█████████████████▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+"█████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+"████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+"████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
+            
+           texto.append("\nVOCÊ PERDEU UMA VIDA CONGELADO !!!");
+            
+            
+        }
     }//GEN-LAST:event_naoActionPerformed
 
     private void reiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reiniciarActionPerformed
         // TODO add your handling code here:
-        btenviar.setEstado(1);
-        btrep.setEstado(1);
-        btnao.setEstado(1);
-        btsim.setEstado(1);
-        contagem = 0;
-        texto.setText("");
-        inicio();
+         reiniciar(1);
        
     }//GEN-LAST:event_reiniciarActionPerformed
+   
+    
     public String lendo(){
        
         lido = ler.getText().toLowerCase();
@@ -381,7 +587,88 @@ public class Livro extends javax.swing.JFrame {
         return lido;
         
     }
+    
+    
     public void finais (int pontos){
+        
+        if (pontos == 0){
+            texto.append("\n───────▄█──────────█─────────█▄───────\n" +
+"─────▐██──────▄█──███──█▄─────██▌─────\n" +
+"────▐██▀─────█████████████────▀██▌────\n" +
+"───▐██▌─────██████████████─────▐██▌───\n" +
+"───████────████████████████────████───\n" +
+"──▐█████──██████████████████──█████▌──\n" +
+"───████████████████████████████████───\n" +
+"────███████▀▀████████████▀▀███████────\n" +
+"─────█████▌──▄▄─▀████▀─▄▄──▐█████─────\n" +
+"───▄▄██████▄─▀▀──████──▀▀─▄██████▄▄───\n" +
+"──██████████████████████████████████──\n" +
+"─████████████████████████████████████─\n" +
+"▐██████──███████▀▄██▄▀███████──██████▌\n" +
+"▐█████────██████████████████────█████▌\n" +
+"▐█████─────██████▀──▀██████─────█████▌\n" +
+"─█████▄─────███────────███─────▄█████─\n" +
+"──██████─────█──────────█─────██████──\n" +
+"────█████────────────────────█████────\n" +
+"─────█████──────────────────█████─────\n" +
+"──────█████────────────────█████──────\n" +
+"───────████───▄────────▄───████───────\n" +
+"────────████─██────────██─████────────\n" +
+"────────████████─▄██▄─████████────────\n" +
+"───────████████████████████████───────\n" +
+"───────████████████████████████───────\n" +
+"────────▀█████████▀▀█████████▀────────\n" +
+"──────────▀███▀────────▀███▀──────────\n");
+            
+            texto.append("VOCÊ FICOU SEM ENERGIA POR ISSO PERDEU TODA A VIDA !!");
+             p1.setVida(0);
+             displayVida(p1.getVida(),p1.getId());
+             p1.setVida(3);
+             p1.setEnergia(3);
+        }
+        if(pontos == -1){
+            texto.setText("███████████████████████████████████\n" +
+"███████████████████████████████████\n" +
+"███████████████████████████████████\n" +
+"█████████████▒▒▒▒▒▒▒▒▒█████████████\n" +
+"█████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█████████\n" +
+"███████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒███████\n" +
+"██████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██████\n" +
+"█████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█████\n" +
+"█████▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒█████\n" +
+"████▒▒▒▒███▒▒▒▒▒▒▒▒▒▒▒▒▒███▒▒▒▒████\n" +
+"███▒▒▒▒██████▒▒▒▒▒▒▒▒▒██████▒▒▒▒███\n" +
+"███▒▒▒███▐▀███▒▒▒▒▒▒▒███▀▌███▒▒▒███\n" +
+"███▒▒▒██▄▐▌▄███▒▒▒▒▒███▄▐▌▄██▒▒▒███\n" +
+"███▒▒▒▒██▌███▒▒▒█▒█▒▒▒███▐██▒▒▒▒███\n" +
+"██▒▒▒▒▒▒███▒▒▒▒██▒██▒▒▒▒███▒▒▒▒▒▒██\n" +
+"█▒▒▒▒▒▒▒▒█▒▒▒▒██▒▒▒██▒▒▒▒█▒▒▒▒▒▒▒▒█\n" +
+"█▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒█\n" +
+"█▒▒▒▒█▒▒█▒▒▒▒██▒▒▒▒▒██▒▒▒▒█▒▒█▒▒▒▒█\n" +
+"██▒▒▒█▒▒█▒▒▒▒█▒██▒██▒█▒▒▒▒█▒▒█▒▒▒██\n" +
+"███▒█▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒█▒███\n" +
+"█████▒▒█▒▒▒▐███████████▌▒▒▒█▒▒█████\n" +
+"███████▒▒▒▐█▀██▀███▀██▀█▌▒▒▒███████\n" +
+"███████▒▒▒▒█▐██▐███▌██▌█▒▒▒▒███████\n" +
+"███████▒▒▒▒▒▐▒▒▐▒▒▒▌▒▒▌▒▒▒▒▒███████\n" +
+"████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒████████\n" +
+"████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒████████\n" +
+"█████████▒▒█▒█▒▒▒█▒▒▒█▒█▒▒█████████\n" +
+"█████████▒██▒█▒▒▒█▒▒▒█▒██▒█████████\n" +
+"██████████████▒▒███▒▒██████████████\n" +
+"██████████████▒█████▒██████████████\n" +
+"███████████████████████████████████\n" +
+"███████████████████████████████████");
+            
+            texto.append("\nVOCÊ  PERDEU TODA A VIDA !!");
+             p1.setVida(0);
+             displayVida(p1.getVida(),p1.getId());
+           
+             p1.setEnergia(0);
+             displayEnergia(p1.getEnergia(),p1.getId());
+             
+        }
+        
         if(pontos == 1){
             texto.append("¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶\n" +
 "¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶\n" +
@@ -624,11 +911,227 @@ public class Livro extends javax.swing.JFrame {
         }
         
     }
+    public void displayEnergia(int energia , int id ){
+        
+        if(id == 1){
+        switch (energia) {
+            case 1 -> {
+                energiaBar.setText(" ✨");
+            }
+            case 0 ->{
+                energiaBar.setText(" ");
+            }
+            case 2 -> {
+                energiaBar.setText(" ✨ ✨");
+
+            }
+            case 3->{
+                energiaBar.setText(" ✨ ✨ ✨ ");
+            }
+        
+            default -> {
+            }
+         }
+        
+        }
+        if (id ==2) {
+            switch (energia) {
+            case 1 -> {
+                energiaBar2.setText(" ✨");
+            }
+            case 0 ->{
+                energiaBar2.setText(" ");
+            }
+            
+            case 2 -> {
+                energiaBar2.setText(" ✨ ✨");
+
+            }
+            case 3->{
+                energiaBar2.setText(" ✨ ✨ ✨ ");
+            }
+        
+            default -> {
+            }
+         }
+            
+        }
+    }
+    public void reiniciar(int tipo){
+        if (tipo ==1 ){
+        int minhaVida = p1.getVida();
+        int minhaEnergia = p1.getEnergia();
+        btenviar.setEstado(1);
+        btrep.setEstado(1);
+        btnao.setEstado(0);
+        btsim.setEstado(1);
+        contagem = 0;
+        texto.setText("");
+        p1.setEnergia(minhaEnergia);
+        p1.setVida(minhaVida);
+        inicio();
+        }
+        if(tipo ==2){
+        
+        btenviar.setEstado(1);
+        btrep.setEstado(1);
+        btnao.setEstado(1);
+        btsim.setEstado(1);
+        contagem = 0;
+       
+        inicio();
+        }
+    }
+    public void visibilidadeArea2(boolean visibilidade){
+        
+       vidaBar2.setVisible(visibilidade);
+       energiaBar2.setVisible(visibilidade);
+       vida2.setVisible(visibilidade);
+       energia2.setVisible(visibilidade);
+    }
+    public void displayVida(int vida , int id ){
+        
+        if(id == 1){
+        switch (vida) {
+            case 1 -> {
+                vidaBar.setText(" ❤");
+            }
+            case 0 ->{
+                vidaBar.setText(" ");
+            }
+            case 2 -> {
+                vidaBar.setText(" ❤ ❤");
+
+            }
+            case 3->{
+                vidaBar.setText(" ❤ ❤ ❤ ");
+            }
+        
+            default -> {
+            }
+         }
+        
+        }
+        if (id ==2) {
+            visibilidadeArea2(true);
+            switch (vida) {
+            case 1 -> {
+                vidaBar2.setText(" ❤");
+            }
+            case 0 ->{
+                vidaBar2.setText(" ");
+            }
+            case 2 -> {
+                vidaBar2.setText(" ❤ ❤");
+
+            }
+            case 3->{
+                vidaBar2.setText(" ❤ ❤ ❤ ");
+            }
+        
+            default -> {
+            }
+         }
+        
+            
+        }
+    }
+    
+    
+    public void luta(int tipo){
+        if (tipo == 1){
+        displayVida(p2.getVida(),p2.getId());
+        displayEnergia(p2.getEnergia(),p2.getId());
+        System.out.println(lido);
+        texto.append("""
+                     
+                     O rei tirano te encontrou e começa o duelo 
+                     
+                     Responda as charadas para vencer !!
+                     
+                     Eu sou algo que as pessoas amam ou odeiam.
+                     Eu mudo tanto a aparência das pessoas quanto seus pensamentos.
+                     Se uma pessoa cuida de si mesma, eu subo ainda mais. 
+                     Eu engano algumas pessoas. 
+                     E para outras, sou um verdadeiro mistério. 
+                     Algumas pessoas bem que tentam me esconder,
+                     mas uma hora, inevitavelmente, eu apareço. 
+                     Não importa o que as pessoas tentem, eu jamais cairei.
+                     Quem sou eu?
+                     
+                     """);
+        }
+        if (tipo == 2){
+            texto.append("""
+                \nEu posso guardar tudo dentro de mim. 
+                Tudo o que você pode imaginar:
+                 o vento, as florestas, o mundo, o universo e até Deus.
+                Tudo o que vier à sua cabeça você pode encontrar dentro de mim.
+                   Quem sou eu?
+                    
+                    """);
+        }
+    }
+    public void errado(){
+        int estado = btrep.getEstado();
+             btrep.setEstado(estado+1);
+             texto.append("A SUA RESPOSTA ESTÁ ERRADA POR ISSO VOCÊ PERDEU VIDA");
+             System.out.println(estado);
+             contagem+=1;
+             p1.setVida(p1.getVida()-1);
+             displayVida(p1.getVida(),p1.getId());
+         if(estado == 2 || estado == 1){
+            
+             
+             texto.append("""
+                          \nO home se aproxima sem dizer o nome misteriosamente 
+                          ele desaparece e aparece na sua frente e fala:
+                          
+                          --- Eu preciso de você 
+                          
+                          Nesse momento você sente seu corpo viajando e do nada 
+                          aparece em um lago congelado , em frente a esse lago 
+                          você via uma lamparina a gás e o homem fala:
+                          
+                          --- Não se mova ..
+                          
+                          Você o obedece ?
+                          
+                          """);
+             
+            
+             
+            }
+            if (estado == 4){
+                luta(2);
+
+            }
+            if(p1.getVida()== 0){
+                finais(-1);
+            }
+         
+    }
+    public boolean procura (String respostas[], String lido){
+        boolean achado = false;
+        for(int i = 0; i < respostas.length; i++){
+            System.out.println(respostas[i]);
+            if(lido.equals(respostas[i])){
+                achado = true;
+
+            }
+        
+        }
+        return achado;
+
+    }
     public void inicio(){
+       visibilidadeArea2(true);
+       
+       displayEnergia(3,p1.getId());
+       displayVida(3,p1.getId());
        
        
-       
-        texto.setText(" █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\n" +
+        texto.append(" █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\n" +
 "█---╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗--█\n" +
 "█---║║║╠─║─║─║║║║║╠─--█\n" +
 "█---╚╩╝╚╝╚╝╚╝╚╝╩─╩╚╝--█\n" +
@@ -695,7 +1198,7 @@ public class Livro extends javax.swing.JFrame {
             public void run() {
                 try {
                     new Livro().setVisible(true);
-                    System.out.println("teste");
+                    
                 } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -705,16 +1208,32 @@ public class Livro extends javax.swing.JFrame {
         
         
     }
-
+ Personagem p1 = new Personagem("Protagonista",1);
+ Personagem p2 = new Personagem("Antagonista",2);
+ 
+         int minhaVida = p1.getVida();
+         int minhaEnergia = p1.getEnergia();
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel energia;
+    private javax.swing.JLabel energia2;
+    public javax.swing.JLabel energiaBar;
+    public javax.swing.JLabel energiaBar2;
     public javax.swing.JButton enviar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField ler;
     public javax.swing.JButton nao;
+    private javax.swing.JLabel nome1;
+    private javax.swing.JLabel nome2;
     public javax.swing.JButton reiniciar;
     public javax.swing.JButton responder;
     public javax.swing.JButton sim;
     private javax.swing.JTextArea texto;
+    private javax.swing.JLabel vida;
+    private javax.swing.JLabel vida2;
+    public javax.swing.JLabel vidaBar;
+    public javax.swing.JLabel vidaBar2;
     // End of variables declaration//GEN-END:variables
 }
