@@ -18,52 +18,37 @@ import javax.swing.JFrame;
 
     
 
-public class Livro extends javax.swing.JFrame {
+public class Livro extends javax.swing.JFrame  {
    
     /**
      * Creates new form NewJFrame
      */
     public String lido ="";
     int contagem = 0;
-   
-    
-    class B1{
-        int estado = 1;
-        String entrada;
-
-        public String getEntrada() {
-            return entrada;
-        }
-
-        public void setEntrada(String entrada) {
-            this.entrada = entrada;
-        }
-        
-
-        public int getEstado() {
-            return estado;
-        }
-
-        public void setEstado(int estado) {
-            this.estado = estado;
-        }
-        
-    }
     public B1 btsim = new B1();
     public B1 btnao = new B1();
     public B1 btenviar = new B1();
     public B1 btrep = new B1();
+    public Capitulo cap1;
+    public Capitulo cap2;
     
+    public Capitulo fim;    
+    public Capitulo cap3;
     
 
     
     
     public Livro() throws InterruptedException  {
+        
+        
+        
          initComponents();
          
+       
          nome1.setText(p1.getNome());
          nome2.setText(p2.getNome());
             inicio();
+           
             
      
     }
@@ -98,6 +83,11 @@ public class Livro extends javax.swing.JFrame {
         vidaBar2 = new javax.swing.JLabel();
         nome2 = new javax.swing.JLabel();
 
+        
+
+
+
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
 
@@ -107,6 +97,8 @@ public class Livro extends javax.swing.JFrame {
         sim.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         sim.setForeground(new java.awt.Color(255, 255, 255));
         sim.setText("SIM");
+
+        
         sim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 simActionPerformed(evt);
@@ -361,6 +353,8 @@ public class Livro extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
+        
+       
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -379,68 +373,22 @@ public class Livro extends javax.swing.JFrame {
         
         if(estado == 1){
             contagem +=5;
-            texto.append("""
-                         
-                         ---------------------------------------------
-                         Você acabou de acordar um pouco sonolento vai 
-                         para o banheiro escovar os dentes , você repara em algo
-                         esquisito na mesa de jantar .
-                         
-                         Você olha para fora do quarto e vê um livro estranho 
-                         você vai pegar o livro ? """);
-            
+            cap1.displayEscolha(Historia.primeiroSim, 0, 0, vidaBar, energiaBar);
            
-        texto.append("╔══╗ \n" +
-"║██║ \n" +
-"║(O)║♫ ♪ ♫ ♪\n" +
-"╚══╝\n" +
-"▄ █ ▄ █ ▄ ▄ █ ▄ █ ▄ █\n" +
-"Min- - - - - - - - - - - -●Max\n");
-        
-
+            
         }
         if(estado == 2){
-               p1.setEnergia(p1.getEnergia()-1);
-               displayEnergia(p1.getEnergia(), 1);
-               System.out.println(p1.getEnergia());
-               
+            
+            
             int estadoTexto = btenviar.getEstado();
-            texto.append("""
-                         \n
-                         
-                         
-                         Você ainda está sonolento por isso perdeu 1 ponto de energia 
-                         para pegar o livro !!
-                         
-                         ..............................................
-                     https://i.ytimg.com/vi/xB_O0Adpm80/maxresdefault.jpg
-                         ...............................................
-                         Você toca no livro e no mesmo instante 
-                         
-                     o livro se abre no país em que as pessoas viraram pedras
-                               por causa de um vulcão.
-                         -Qual o país ? 
-                         Pergunta um homem em pé de frente a janela .
-                         
-                         Qual sua resposta ?
-                         .....
-                         
-                               """);
+            cap1.displayEscolha(Historia.segundoSim, 0, -1, vidaBar, energiaBar);
             minhaEnergia = p1.getEnergia();
-            System.out.println(minhaEnergia);
+            
+       
             if(minhaEnergia == 0){
-                    
-                   finais(0);
-                }
-            
-            
-               
-          
-      
-           
-               
-           
-            
+                     fim.displayEscolha(Historia.finais(0), 0, 0, vidaBar, energiaBar);
+                   //finais(0);
+                }    
         }
         if (estado == 3){
             luta(1);
@@ -466,6 +414,8 @@ public class Livro extends javax.swing.JFrame {
         int estado = btrep.getEstado();
         btrep.setEstado(estado+1);
         System.out.println(lido);
+        
+        
         String leitura = lido;
         String respostas [] = {"idade","itália","sócrates","alfabeto"};
         System.out.println(procura(respostas, lido));
@@ -474,26 +424,30 @@ public class Livro extends javax.swing.JFrame {
                 
             if(leitura.equals("idade")){
                 p2.setVida(p2.getVida()-1);
-                displayVida(p2.getId(),p2.getId());
+                p2.displayPersonagem(p2.getVida(),p2.getEnergia(), vidaBar2, energiaBar2);
+                //displayVida(p2.getId(),p2.getId());
                 texto.append("""
                         VOCÊ ACERTOU A PRIMEIRA PERGUNTA !!
                         """);
                         luta(2);
             }
             if(leitura.equals("alfabeto")){
-                p2.setVida(p2.getVida()-1);
-                displayVida(p2.getId(),p2.getId());
-                finais(10);
+                //p2.setVida(p2.getVida()-1);
+                
+                 fim.displayEscolha(Historia.finais(10), -1, 0, vidaBar, energiaBar);
+                //finais(10);
             }
             
             if(leitura.equals("itália")){
                 contagem +=5;
-                    finais(contagem);
+                 fim.displayEscolha(Historia.finais(contagem), 0, 0, vidaBar, energiaBar);
+                   // finais(contagem);
             }
             
             if(leitura.equals("sócrates")){
                 contagem+= 2;
-                finais(contagem);
+                fim.displayEscolha(Historia.finais(contagem), 0, 0, vidaBar, energiaBar);
+                //finais(contagem);
             }
         }
 
@@ -521,53 +475,15 @@ public class Livro extends javax.swing.JFrame {
         System.out.println(estado2);
         btnao.setEstado(estado2+1);
         if(estado == 1){
-            texto.append("""
-                         
-                         .............................................
-                         Você escuta barulhos muito altos dentro da sua própria 
-                         mente , você começa a ver algumas imagens em delírio!!
-                         
-                         César algusto o imperador precisa de UMA casa ,
-                         você ficou preso num sono profundo , 
-                         
-                         decifre a senha pra despertar !
-                         
-                         DICA: Tó tfj rvf obeb tfj ! Tpv p bvups !
-                         """);
+            cap1.displayEscolha(Historia.primeiroNao, 0, 0, vidaBar, energiaBar);
         }
         if(estado == 2){
             contagem+=3;
-            finais(contagem);
+             fim.displayEscolha(Historia.finais(contagem), 0, 0, vidaBar, energiaBar);
+            //finais(contagem);
         }
         if (estado2 == 2){
-            p1.setVida(p1.getVida()-1);
-            displayVida(p1.getVida(),p1.getId());
-            texto.append("\n▒▒▒▒▒▒▒▒▒▒▒▄▄▄▄░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
-"▒▒▒▒▒▒▒▒▒▄██████▒▒▒▒▒▄▄▄█▄▒▒▒▒▒▒▒▒▒▒\n" +
-"▒▒▒▒▒▒▒▄██▀░░▀██▄▒▒▒▒████████▄▒▒▒▒▒▒\n" +
-"▒▒▒▒▒▒███░░░░░░██▒▒▒▒▒▒█▀▀▀▀▀██▄▄▒▒▒\n" +
-"▒▒▒▒▒▄██▌░░░░░░░██▒▒▒▒▐▌▒▒▒▒▒▒▒▒▀█▄▒\n" +
-"▒▒▒▒▒███░░▐█░█▌░██▒▒▒▒█▌▒▒▒▒▒▒▒▒▒▒▀▌\n" +
-"▒▒▒▒████░▐█▌░▐█▌██▒▒▒██▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
-"▒▒▒▐████░▐░░░░░▌██▒▒▒█▌▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
-"▒▒▒▒████░░░▄█░░░██▒▒▐█▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
-"▒▒▒▒████░░░██░░██▌▒▒█▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
-"▒▒▒▒████▌░▐█░░███▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
-"▒▒▒▒▐████░░▌░███▒▒▒██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
-"▒▒▒▒▒████░░░███▒▒▒▒█▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
-"▒▒▒██████▌░████▒▒▒██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
-"▒▐████████████▒▒███▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
-"▒█████████████▄████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
-"██████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
-"██████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
-"█████████████████▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
-"█████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
-"████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
-"████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
-            
-           texto.append("\nVOCÊ PERDEU UMA VIDA CONGELADO !!!");
-            
-            
+           cap1.displayEscolha(Historia.segundoNao, -1, 0, vidaBar, energiaBar);
         }
     }//GEN-LAST:event_naoActionPerformed
 
@@ -588,376 +504,8 @@ public class Livro extends javax.swing.JFrame {
         
     }
     
-    
-    public void finais (int pontos){
+     public void reiniciar(int tipo){
         
-        if (pontos == 0){
-            texto.append("\n───────▄█──────────█─────────█▄───────\n" +
-"─────▐██──────▄█──███──█▄─────██▌─────\n" +
-"────▐██▀─────█████████████────▀██▌────\n" +
-"───▐██▌─────██████████████─────▐██▌───\n" +
-"───████────████████████████────████───\n" +
-"──▐█████──██████████████████──█████▌──\n" +
-"───████████████████████████████████───\n" +
-"────███████▀▀████████████▀▀███████────\n" +
-"─────█████▌──▄▄─▀████▀─▄▄──▐█████─────\n" +
-"───▄▄██████▄─▀▀──████──▀▀─▄██████▄▄───\n" +
-"──██████████████████████████████████──\n" +
-"─████████████████████████████████████─\n" +
-"▐██████──███████▀▄██▄▀███████──██████▌\n" +
-"▐█████────██████████████████────█████▌\n" +
-"▐█████─────██████▀──▀██████─────█████▌\n" +
-"─█████▄─────███────────███─────▄█████─\n" +
-"──██████─────█──────────█─────██████──\n" +
-"────█████────────────────────█████────\n" +
-"─────█████──────────────────█████─────\n" +
-"──────█████────────────────█████──────\n" +
-"───────████───▄────────▄───████───────\n" +
-"────────████─██────────██─████────────\n" +
-"────────████████─▄██▄─████████────────\n" +
-"───────████████████████████████───────\n" +
-"───────████████████████████████───────\n" +
-"────────▀█████████▀▀█████████▀────────\n" +
-"──────────▀███▀────────▀███▀──────────\n");
-            
-            texto.append("VOCÊ FICOU SEM ENERGIA POR ISSO PERDEU TODA A VIDA !!");
-             p1.setVida(0);
-             displayVida(p1.getVida(),p1.getId());
-             p1.setVida(3);
-             p1.setEnergia(3);
-        }
-        if(pontos == -1){
-            texto.setText("███████████████████████████████████\n" +
-"███████████████████████████████████\n" +
-"███████████████████████████████████\n" +
-"█████████████▒▒▒▒▒▒▒▒▒█████████████\n" +
-"█████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█████████\n" +
-"███████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒███████\n" +
-"██████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██████\n" +
-"█████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█████\n" +
-"█████▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒█████\n" +
-"████▒▒▒▒███▒▒▒▒▒▒▒▒▒▒▒▒▒███▒▒▒▒████\n" +
-"███▒▒▒▒██████▒▒▒▒▒▒▒▒▒██████▒▒▒▒███\n" +
-"███▒▒▒███▐▀███▒▒▒▒▒▒▒███▀▌███▒▒▒███\n" +
-"███▒▒▒██▄▐▌▄███▒▒▒▒▒███▄▐▌▄██▒▒▒███\n" +
-"███▒▒▒▒██▌███▒▒▒█▒█▒▒▒███▐██▒▒▒▒███\n" +
-"██▒▒▒▒▒▒███▒▒▒▒██▒██▒▒▒▒███▒▒▒▒▒▒██\n" +
-"█▒▒▒▒▒▒▒▒█▒▒▒▒██▒▒▒██▒▒▒▒█▒▒▒▒▒▒▒▒█\n" +
-"█▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒█\n" +
-"█▒▒▒▒█▒▒█▒▒▒▒██▒▒▒▒▒██▒▒▒▒█▒▒█▒▒▒▒█\n" +
-"██▒▒▒█▒▒█▒▒▒▒█▒██▒██▒█▒▒▒▒█▒▒█▒▒▒██\n" +
-"███▒█▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒█▒███\n" +
-"█████▒▒█▒▒▒▐███████████▌▒▒▒█▒▒█████\n" +
-"███████▒▒▒▐█▀██▀███▀██▀█▌▒▒▒███████\n" +
-"███████▒▒▒▒█▐██▐███▌██▌█▒▒▒▒███████\n" +
-"███████▒▒▒▒▒▐▒▒▐▒▒▒▌▒▒▌▒▒▒▒▒███████\n" +
-"████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒████████\n" +
-"████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒████████\n" +
-"█████████▒▒█▒█▒▒▒█▒▒▒█▒█▒▒█████████\n" +
-"█████████▒██▒█▒▒▒█▒▒▒█▒██▒█████████\n" +
-"██████████████▒▒███▒▒██████████████\n" +
-"██████████████▒█████▒██████████████\n" +
-"███████████████████████████████████\n" +
-"███████████████████████████████████");
-            
-            texto.append("\nVOCÊ  PERDEU TODA A VIDA !!");
-             p1.setVida(0);
-             displayVida(p1.getVida(),p1.getId());
-           
-             p1.setEnergia(0);
-             displayEnergia(p1.getEnergia(),p1.getId());
-             
-        }
-        
-        if(pontos == 1){
-            texto.append("¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶\n" +
-"¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶\n" +
-"¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶11111111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶\n" +
-"¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶11111111111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶\n" +
-"¶¶¶¶¶¶¶¶¶¶11111111111111111111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶\n" +
-"¶¶¶¶¶¶¶1111111111111111111111111¶¶¶¶¶¶¶¶¶¶¶¶¶\n" +
-"¶¶¶¶¶1111111¶¶¶¶¶¶¶¶111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶\n" +
-"¶¶¶¶11111111¶¶¶111¶¶¶¶¶¶¶1111111¶¶¶¶¶¶¶¶¶¶¶¶¶\n" +
-"¶¶¶1111111111¶¶¶1111111111111111111¶¶¶¶¶¶¶¶¶¶\n" +
-"¶¶¶111111111111¶¶¶¶1111111111¶¶¶¶¶¶1¶¶¶¶¶1¶¶¶\n" +
-"¶¶111111111111111111111111111¶¶111111111111¶¶\n" +
-"¶¶111111111111111111111111111111111111111111¶\n" +
-"¶1111¶¶¶¶1111111111111111111111111111111111¶¶\n" +
-"¶11¶¶¶¶¶111111111111111111111111111¶¶¶¶¶¶11¶¶\n" +
-"¶1¶¶¶¶¶111111111111111111111111111¶¶¶¶¶¶¶¶¶¶¶\n" +
-"¶¶¶¶¶¶¶11111111111¶11111111111111¶¶¶¶¶¶¶¶¶¶¶¶\n" +
-"¶¶¶¶¶¶111111111111¶¶1111111111111¶¶¶¶¶¶¶¶1¶¶¶\n" +
-"¶¶¶¶¶¶1111111111111¶¶¶111111111111¶¶¶¶¶11¶¶¶¶\n" +
-"¶¶¶¶¶¶1111111¶¶¶11111¶¶¶¶111111111111111¶¶¶¶¶\n" +
-"¶¶¶¶¶¶11111¶¶¶¶¶11111111¶¶¶¶¶¶¶¶¶¶¶¶111¶¶¶¶¶¶\n" +
-"¶¶¶¶¶¶111¶¶¶¶¶¶¶11111111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶\n" +
-"¶¶¶¶¶¶¶1¶¶¶¶¶¶¶¶¶11111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶\n" +
-"¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶\n" +
-"¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶11¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶\n" +
-"¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶\n" +
-"¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶\n"
-                    + "VOCÊ ESTÁ SONHANDO ?!!");
-        }
-        if(pontos == 2){
-            texto.append("\n_¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶\n" +
-"_¶¶___________________________________¶¶\n" +
-"_¶¶___________________________________¶¶\n" +
-"__¶¶_________________________________¶¶_\n" +
-"__¶¶_________________________________¶¶_\n" +
-"___¶¶_______________________________¶¶__\n" +
-"___¶¶______________________________¶¶___\n" +
-"____¶¶¶__________________________¶¶¶____\n" +
-"_____¶¶¶¶_¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶_¶¶¶¶_____\n" +
-"_______¶¶¶¶_¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶_¶¶¶¶_______\n" +
-"_________¶¶¶¶_¶¶¶¶¶¶¶¶¶¶¶¶_¶¶¶¶_________\n" +
-"___________¶¶¶¶¶_¶¶¶¶¶¶¶_¶¶¶¶___________\n" +
-"______________¶¶¶¶_¶¶¶_¶¶¶______________\n" +
-"________________¶¶¶_¶_¶¶________________\n" +
-"_________________¶¶¶_¶¶_________________\n" +
-"__________________¶¶_¶¶_________________\n" +
-"__________________¶¶_¶__________________\n" +
-"__________________¶¶_¶¶_________________\n" +
-"________________¶¶¶_¶_¶¶¶_______________\n" +
-"_____________¶¶¶¶¶__¶__¶¶¶¶¶____________\n" +
-"__________¶¶¶¶¶_____¶_____¶¶¶¶__________\n" +
-"________¶¶¶¶________¶_______¶¶¶¶¶_______\n" +
-"_______¶¶¶__________¶__________¶¶¶¶_____\n" +
-"_____¶¶¶____________¶____________¶¶¶____\n" +
-"____¶¶¶_____________¶______________¶¶___\n" +
-"___¶¶¶______________¶_______________¶¶__\n" +
-"___¶¶_______________¶________________¶¶_\n" +
-"__¶¶________________¶________________¶¶_\n" +
-"__¶¶_______________¶¶¶________________¶_\n" +
-"__¶¶_¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶_¶¶\n" +
-"__¶¶_¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶_¶¶\n" +
-"__¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶\n");
-            texto.append("""
-                         VOCÊ GANHOU O PODER DE VIAJAR NO TEMPO E ENTRE REINOS
-                         AGORA VOCÊ É UM VIAJANTE DO TEMPO !!
-                         """);
-        }
-        if(pontos == 8){
-            
-            texto.append("\n─────▄██▀▀▀▀▀▀▀▀▀▀▀▀▀██▄─────\n" +
-"────███───────────────███────\n" +
-"───███─────────────────███───\n" +
-"──███───▄▀▀▄─────▄▀▀▄───███──\n" +
-"─████─▄▀────▀▄─▄▀────▀▄─████─\n" +
-"─████──▄████─────████▄──█████\n" +
-"█████─██▓▓▓██───██▓▓▓██─█████\n" +
-"█████─██▓█▓██───██▓█▓██─█████\n" +
-"█████─██▓▓▓█▀─▄─▀█▓▓▓██─█████\n" +
-"████▀──▀▀▀▀▀─▄█▄─▀▀▀▀▀──▀████\n" +
-"███─▄▀▀▀▄────███────▄▀▀▀▄─███\n" +
-"███──▄▀▄─█──█████──█─▄▀▄──███\n" +
-"███─█──█─█──█████──█─█──█─███\n" +
-"███─█─▀──█─▄█████▄─█──▀─█─███\n" +
-"███▄─▀▀▀▀──█─▀█▀─█──▀▀▀▀─▄███\n" +
-"████─────────────────────████\n" +
-"─███───▀█████████████▀───████\n" +
-"─███───────█─────█───────████\n" +
-"─████─────█───────█─────█████\n" +
-"───███▄──█────█────█──▄█████─\n" +
-"─────▀█████▄▄███▄▄█████▀─────\n" +
-"──────────█▄─────▄█──────────\n" +
-"──────────▄█─────█▄──────────\n" +
-"───────▄████─────████▄───────\n" +
-"─────▄███████───███████▄─────\n" +
-"───▄█████████████████████▄───\n" +
-"─▄███▀───███████████───▀███▄─\n" +
-"███▀─────███████████─────▀███\n" +
-"▌▌▌▌▒▒───███████████───▒▒▐▐▐▐\n" +
-"─────▒▒──███████████──▒▒─────\n" +
-"──────▒▒─███████████─▒▒──────\n" +
-"───────▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒───────\n" +
-"─────────████░░█████─────────\n" +
-"────────█████░░██████────────\n" +
-"──────███████░░███████───────\n" +
-"─────█████──█░░█──█████──────\n" +
-"─────█████──████──█████──────\n" +
-"──────████──████──████───────\n" +
-"──────████──████──████───────\n" +
-"──────████───██───████───────\n" +
-"──────████───██───████───────\n" +
-"──────████──████──████───────\n" +
-"─██────██───████───██─────██─\n" +
-"─██───████──████──████────██─\n" +
-"─███████████████████████████─\n" +
-"─██─────────████──────────██─\n" +
-"─██─────────████──────────██─\n" +
-"────────────████─────────────\n" +
-"─────────────██──────────────\n");
-            texto.append("""
-                         VOCÊ FOI CAPTURADO PELOS PALHAÇÕS DE VEMPTA 
-                         E ACABOU EM UM PESADELO ETERNO !!
-                         """);
-            
-        }
-        if(pontos == 6){
-            texto.append("n11111111¶111111111111111111111111111111111111 \n" +
-"11111111¶¶¶1111111111111111111111111111111111 \n" +
-"111111111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶111111111111111111 \n" +
-"1111111111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1111111111111 \n" +
-"111111111111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1111 \n" +
-"1111111111¶¶¶¶¶¶¶¶11¶¶¶¶¶¶1111¶¶¶¶¶¶¶¶¶¶¶¶¶11 \n" +
-"1111111¶¶¶¶¶¶¶¶¶¶1¶11¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1 \n" +
-"1¶¶¶¶¶¶¶¶¶¶¶¶¶¶11¶¶¶1¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1111¶¶¶¶1 \n" +
-"111¶¶¶¶¶¶¶¶¶¶¶11¶¶¶¶11¶¶¶¶¶¶¶¶¶¶111111111¶111 \n" +
-"11111111¶¶¶¶¶11¶¶¶¶¶¶11¶¶¶¶¶¶¶¶¶¶¶11111111111 \n" +
-"1111111¶¶¶¶¶11¶¶¶¶¶¶¶¶11¶¶¶¶¶¶1¶¶¶¶1111111111 \n" +
-"111111¶¶¶¶¶11¶¶¶¶¶¶¶¶¶111¶¶¶¶¶111¶¶¶¶¶¶¶¶¶111 \n" +
-"11111¶¶¶¶¶¶1¶¶¶¶¶¶¶¶¶11111¶¶¶1111111¶¶¶11¶¶11 \n" +
-"11111¶¶¶¶¶11¶¶¶¶¶¶¶¶¶111111¶¶¶111111111111111 \n" +
-"1111¶¶¶¶¶¶11¶¶¶¶¶¶¶¶111111¶¶¶¶¶¶¶¶11111111111 \n" +
-"111¶¶¶¶¶¶¶11¶¶¶¶¶¶¶¶111111¶¶¶¶¶¶1111111111111 \n" +
-"1¶¶¶11¶¶¶¶11¶¶¶¶¶¶¶¶¶111111111111111111111111 \n" +
-"111111¶¶¶¶¶1¶¶¶¶¶¶¶¶¶¶11111111111111111111111 \n" +
-"111111¶¶¶¶¶1¶¶¶¶¶¶¶¶¶¶¶¶1111111111111¶1111111 \n" +
-"111111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1111111111¶111111 \n" +
-"111111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1111111¶¶11111 \n" +
-"11111¶¶¶¶11¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶111¶¶¶¶1111 \n" +
-"11111¶¶¶1111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶11¶¶¶¶¶1111 \n" +
-"1111¶¶111111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶11¶¶¶¶¶¶1111 \n" +
-"11¶¶111111111¶¶¶1111¶¶¶¶¶¶¶¶¶¶¶¶11¶¶¶¶¶¶¶1111 \n" +
-"1111111111111¶¶¶1111111¶¶¶¶¶¶¶¶11¶¶¶¶¶¶¶¶1111 \n" +
-"1111111111111¶¶¶111111111¶¶¶¶¶¶11¶¶¶¶¶¶¶¶1111 \n" +
-"1111111111111¶¶111111111111¶¶¶¶11¶¶¶¶¶¶¶¶1111 \n" +
-"111111111111¶¶1111111111111¶¶¶¶11¶¶¶¶¶11¶1111 \n" +
-"111111111111111111111111111¶¶¶¶11¶¶¶¶11111111 \n" +
-"111111111111111111111111111¶¶¶¶11¶¶111¶¶11111 \n" +
-"111111111111111111111111111¶¶¶¶1¶¶11¶¶¶¶¶1111 \n" +
-"11111111111111111111111111¶¶¶¶11111¶¶¶¶¶11111 \n" +
-"11111111111111111111111111¶¶¶1111¶¶¶¶¶1111111 \n" +
-"1111111111111111111111111¶¶¶111¶¶¶¶¶¶11111111 \n" +
-"11111111111111111111111¶¶¶¶11¶¶¶¶¶¶1111111111 \n" +
-"1111111111111111111111¶¶¶¶11¶¶¶¶¶111111111111 \n" +
-"11111111111111111111¶¶¶¶11¶¶¶¶¶11111111111111 \n" +
-"1111111111111111111¶¶¶¶11¶¶¶¶¶111111111111111 \n" +
-"111111111111111111¶¶¶¶11¶¶¶¶11111111111111111 \n" +
-"11111111111111111¶¶¶¶¶1¶¶¶¶¶11111111111111111 \n" +
-"11111111111111111¶¶¶¶11¶¶¶¶111111111111111111 \n" +
-"11111111111111111¶¶¶¶11¶¶¶¶1111111¶1111111111 \n" +
-"11111111111111111¶¶¶¶¶11¶¶¶¶111111¶¶111111111 \n" +
-"111111111111111111¶¶¶¶¶11¶¶¶¶1111¶¶¶111111111 \n" +
-"1111111111111111111¶¶¶¶¶11111111¶¶¶¶111111111 \n" +
-"111111111111111111111¶¶¶¶¶¶¶¶¶1¶¶¶¶¶¶11111111 \n" +
-"11111111111111111111111¶¶¶¶¶¶11¶¶¶¶¶111111111 \n" +
-"1111111111111111111111111¶¶¶¶1¶¶¶¶¶¶111111111 \n" +
-"11111111111111111111111111¶¶¶11¶¶¶¶¶111111111 \n" +
-"11111111111111111111111111¶¶¶11¶¶¶1¶111111111 \n" +
-"111111111111111111111111111¶¶1¶¶1111111111111 \n" +
-"11111111111111111111111111¶¶¶111¶¶11111111111 \n" +
-"11111111111111111111111111¶¶11¶¶¶111111111111 \n" +
-"111111111111111111111111¶¶¶11¶¶¶1111111111111 \n" +
-"1111111111111111111111¶¶¶¶11¶¶¶11111111111111 \n" +
-"111111111111111111111¶¶¶11¶¶¶¶111111111111111 \n" +
-"11111111111111111111¶¶¶11¶¶¶11111111111111111 \n" +
-"11111111111111111111¶¶¶1¶¶¶111111111111111111 \n" +
-"1111111111111111111¶¶¶11¶¶¶111111111111111111 \n" +
-"1111111111111111111¶¶¶¶1¶¶¶11111¶111111111111 \n" +
-"11111111111111111111¶¶¶¶11¶1111¶¶111111111111 \n" +
-"111111111111111111111¶¶¶¶¶¶¶¶¶¶¶¶111111111111 \n" +
-"11111111111111111111111¶¶¶¶¶¶¶¶¶¶111111111111 \n" +
-"1111111111111111111111111¶¶¶¶¶¶¶1111111111111 \n" +
-"1111111111111111111111111¶¶¶¶¶¶¶1111111111111 \n" +
-"1111111111111111111111111¶¶¶¶¶¶11111111111111 \n" +
-"1111111111111111111111111¶¶¶¶¶111111111111111 \n" +
-"1111111111111111111111111¶¶¶¶1111111111111111 \n" +
-"111111111111111111111111¶¶¶¶11111111111111111 \n" +
-"11111111111111111111111¶¶¶1111111111111111111 \n" +
-"1111111111111111111111¶¶111111111111111111111 \n" +
-"11111111111111111111¶¶11111111111111111111111\n");
-            texto.append("""
-                         O NÃO VOCÊ FOI CONSUMIDO PELO FOGO DO DRAGÃO QUE 
-                         MORAVA NO VULCÃO !!
-                         """);
-        }
-        if(pontos == 10){
-            texto.append("\n_________________¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶__________________\n" +
-"_____________¶¶¶________________¶¶¶_______________\n" +
-"___________¶¶______________________¶¶¶¶___________\n" +
-"_________¶¶¶__________________________¶¶¶_________\n" +
-"_______¶¶¶___________________¶¶¶¶_______¶¶________\n" +
-"_¶¶¶¶¶¶__¶¶¶¶¶¶¶¶¶¶¶¶¶_____¶¶¶__¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶__\n" +
-"__¶¶¶¶____¶¶¶¶¶¶¶¶¶_¶¶¶¶¶¶¶¶¶____¶¶¶¶¶¶¶¶¶¶¶¶¶¶___\n" +
-"___¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶___¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶____¶¶¶____\n" +
-"__¶___¶¶¶¶¶¶¶¶______¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶______¶¶__¶__\n" +
-"_¶¶___¶¶¶¶¶¶¶¶¶______¶¶¶¶¶¶¶¶¶¶¶¶¶¶_______¶¶__¶¶__\n" +
-"¶______¶¶¶¶¶¶¶¶_____¶¶¶___¶¶¶¶¶¶¶¶¶___¶¶¶¶¶____¶__\n" +
-"¶__________¶¶¶¶¶¶¶¶¶¶¶______¶¶¶¶¶¶¶¶¶¶¶__¶______¶¶\n" +
-"¶_______________________________________________¶¶\n" +
-"¶________¶¶_____________________________________¶¶\n" +
-"¶______¶¶¶¶_________________________¶¶¶¶________¶¶\n" +
-"¶_____¶__¶¶_________________________¶¶¶¶________¶¶\n" +
-"¶_________¶¶¶______________________¶¶___________¶¶\n" +
-"¶___________¶¶¶__________________¶¶¶____________¶¶\n" +
-"¶¶____________¶¶¶¶____________¶¶¶¶_____________¶__\n" +
-"_¶¶______________¶¶¶¶¶¶¶¶¶¶¶¶¶¶________________¶__\n" +
-"__¶___________________________________________¶¶__\n" +
-"___¶¶________________________________________¶¶___\n" +
-"____¶¶______________________________________¶¶____\n" +
-"_____¶¶___________________________________¶¶______\n" +
-"_______¶¶_______________________________¶¶¶_______\n" +
-"_________¶¶___________________________¶¶¶_________\n" +
-"__________¶¶¶¶_____________________¶¶_____________\n" +
-"______________¶¶¶¶_____________¶¶¶¶¶______________\n" +
-"___________________¶¶¶¶¶¶¶¶¶¶¶¶___________________\n");
-            texto.append("""
-                         VOCÊ FOI PARA A TERRA DE NOR 
-                           SE ALIANDO AS TROPAS DE RESISTÊNCIA 
-                           CONTRA A TIRANIA DO REI VEMPTOR ...
-                              A ALIANÇA VENCEU E VC FOI COROADO REI DE NOR !!!
-                         """);
-        }
-        
-    }
-    public void displayEnergia(int energia , int id ){
-        
-        if(id == 1){
-        switch (energia) {
-            case 1 -> {
-                energiaBar.setText(" ✨");
-            }
-            case 0 ->{
-                energiaBar.setText(" ");
-            }
-            case 2 -> {
-                energiaBar.setText(" ✨ ✨");
-
-            }
-            case 3->{
-                energiaBar.setText(" ✨ ✨ ✨ ");
-            }
-        
-            default -> {
-            }
-         }
-        
-        }
-        if (id ==2) {
-            switch (energia) {
-            case 1 -> {
-                energiaBar2.setText(" ✨");
-            }
-            case 0 ->{
-                energiaBar2.setText(" ");
-            }
-            
-            case 2 -> {
-                energiaBar2.setText(" ✨ ✨");
-
-            }
-            case 3->{
-                energiaBar2.setText(" ✨ ✨ ✨ ");
-            }
-        
-            default -> {
-            }
-         }
-            
-        }
-    }
-    public void reiniciar(int tipo){
         if (tipo ==1 ){
         int minhaVida = p1.getVida();
         int minhaEnergia = p1.getEnergia();
@@ -989,115 +537,42 @@ public class Livro extends javax.swing.JFrame {
        vida2.setVisible(visibilidade);
        energia2.setVisible(visibilidade);
     }
-    public void displayVida(int vida , int id ){
-        
-        if(id == 1){
-        switch (vida) {
-            case 1 -> {
-                vidaBar.setText(" ❤");
-            }
-            case 0 ->{
-                vidaBar.setText(" ");
-            }
-            case 2 -> {
-                vidaBar.setText(" ❤ ❤");
-
-            }
-            case 3->{
-                vidaBar.setText(" ❤ ❤ ❤ ");
-            }
-        
-            default -> {
-            }
-         }
-        
-        }
-        if (id ==2) {
-            visibilidadeArea2(true);
-            switch (vida) {
-            case 1 -> {
-                vidaBar2.setText(" ❤");
-            }
-            case 0 ->{
-                vidaBar2.setText(" ");
-            }
-            case 2 -> {
-                vidaBar2.setText(" ❤ ❤");
-
-            }
-            case 3->{
-                vidaBar2.setText(" ❤ ❤ ❤ ");
-            }
-        
-            default -> {
-            }
-         }
-        
-            
-        }
-    }
+    
+   
     
     
     public void luta(int tipo){
+        cap2 = new Capitulo("Charadas",p2,texto);
+       
         if (tipo == 1){
-        displayVida(p2.getVida(),p2.getId());
-        displayEnergia(p2.getEnergia(),p2.getId());
-        System.out.println(lido);
-        texto.append("""
-                     
-                     O rei tirano te encontrou e começa o duelo 
-                     
-                     Responda as charadas para vencer !!
-                     
-                     Eu sou algo que as pessoas amam ou odeiam.
-                     Eu mudo tanto a aparência das pessoas quanto seus pensamentos.
-                     Se uma pessoa cuida de si mesma, eu subo ainda mais. 
-                     Eu engano algumas pessoas. 
-                     E para outras, sou um verdadeiro mistério. 
-                     Algumas pessoas bem que tentam me esconder,
-                     mas uma hora, inevitavelmente, eu apareço. 
-                     Não importa o que as pessoas tentem, eu jamais cairei.
-                     Quem sou eu?
-                     
-                     """);
+            
+        //displayVida(p2.getVida(),p2.getId());
+        //displayEnergia(p2.getEnergia(),p2.getId());
+        cap2.displayEscolha(Historia.charada1, 0, 0, vidaBar2, energiaBar2);
+        //p2.displayPersonagem(3,3, vidaBar2, energiaBar2);
+        
         }
         if (tipo == 2){
-            texto.append("""
-                \nEu posso guardar tudo dentro de mim. 
-                Tudo o que você pode imaginar:
-                 o vento, as florestas, o mundo, o universo e até Deus.
-                Tudo o que vier à sua cabeça você pode encontrar dentro de mim.
-                   Quem sou eu?
-                    
-                    """);
+            cap2.displayEscolha(Historia.charada2, -1, 0, vidaBar2, energiaBar2);
         }
     }
     public void errado(){
+        
+        
         int estado = btrep.getEstado();
              btrep.setEstado(estado+1);
              texto.append("A SUA RESPOSTA ESTÁ ERRADA POR ISSO VOCÊ PERDEU VIDA");
              System.out.println(estado);
              contagem+=1;
              p1.setVida(p1.getVida()-1);
-             displayVida(p1.getVida(),p1.getId());
+             p1.displayPersonagem(p1.getVida(),p1.getEnergia(), vidaBar, energiaBar);
+             
+             
          if(estado == 2 || estado == 1){
             
-             
-             texto.append("""
-                          \nO home se aproxima sem dizer o nome misteriosamente 
-                          ele desaparece e aparece na sua frente e fala:
-                          
-                          --- Eu preciso de você 
-                          
-                          Nesse momento você sente seu corpo viajando e do nada 
-                          aparece em um lago congelado , em frente a esse lago 
-                          você via uma lamparina a gás e o homem fala:
-                          
-                          --- Não se mova ..
-                          
-                          Você o obedece ?
-                          
-                          """);
+             cap3 = new Capitulo("Preparativos de batalha",p1,texto);
+             cap3.displayEscolha(Historia.chamada, 0, 0, vidaBar, energiaBar);
+             System.out.println(estado);
              
             
              
@@ -1107,7 +582,8 @@ public class Livro extends javax.swing.JFrame {
 
             }
             if(p1.getVida()== 0){
-                finais(-1);
+                fim.displayEscolha(Historia.finais(-1), -3, -3, vidaBar, energiaBar);
+                
             }
          
     }
@@ -1124,45 +600,13 @@ public class Livro extends javax.swing.JFrame {
         return achado;
 
     }
-    public void inicio(){
+    public void inicio() {
        visibilidadeArea2(true);
-       
-       displayEnergia(3,p1.getId());
-       displayVida(3,p1.getId());
-       
-       
-        texto.append(" █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\n" +
-"█---╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗--█\n" +
-"█---║║║╠─║─║─║║║║║╠─--█\n" +
-"█---╚╩╝╚╝╚╝╚╝╚╝╩─╩╚╝--█\n" +
-"█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\n" +
-"");
-        
-        
-        
-        texto.append("..........\n");
-
-        texto.append("            .............\n");
-       
-        texto.append("                                 .............\n");
-        texto.append("""
-                     Terra de Nor 2000 anos depois da Era de Vemptor ......
-                       O livro do tempo repousava sobre 
-                         a proteção da árvore sagrada ,
-                            quando suas páginas correram em direção
-                     as planícies do sul ....\n""");
-        texto.append("""
-                     2020 do tempo comum .... 
-                     O despertador toca 
-                      Acordar ?\n""");
-        
-        
-        
-        
-        
-              
-        
-        }
+        this.cap1 = new Capitulo("inicio",p1,texto);
+        cap1.displayEscolha(Historia.capitulo1, 0, 0,vidaBar,energiaBar);
+        fim = new Capitulo("final",p1,texto);
+            
+    }
 
   
     /**
@@ -1208,11 +652,7 @@ public class Livro extends javax.swing.JFrame {
         
         
     }
- Personagem p1 = new Personagem("Protagonista",1);
- Personagem p2 = new Personagem("Antagonista",2);
- 
-         int minhaVida = p1.getVida();
-         int minhaEnergia = p1.getEnergia();
+    
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel energia;
@@ -1235,5 +675,16 @@ public class Livro extends javax.swing.JFrame {
     private javax.swing.JLabel vida2;
     public javax.swing.JLabel vidaBar;
     public javax.swing.JLabel vidaBar2;
+
+
+    Personagem p1 = new Personagem("Protagonista", 1, vidaBar,energiaBar);
+    Personagem p2 = new Personagem("Antagonista",2, vidaBar2,energiaBar2);
+
+    
+    int minhaVida = p1.getVida();
+    int minhaEnergia = p1.getEnergia();
+ 
     // End of variables declaration//GEN-END:variables
+
 }
+
