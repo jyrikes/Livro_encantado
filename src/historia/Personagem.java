@@ -1,9 +1,6 @@
 ﻿package historia;
 
 import java.util.Objects;
-import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -30,6 +27,23 @@ public class Personagem extends JFrame {
     javax.swing.JLabel nome3;
 
     
+   ///Preciso refatorar pra mais de um personagem !!!
+    public Personagem(String nome ,
+                      int id, javax.swing.JLabel barVida,
+                      javax.swing.JLabel barEnergia,
+                      javax.swing.JLabel nome3 ) 
+    {
+        this.nome = nome;
+        this.vida = 3;
+        this.energia = 3;
+        this.id = id;
+        this.barEnergia = barEnergia;
+        this.barVida = barVida;
+        this.nome3 = nome3;
+        this.pontos = 0;
+        
+    }
+
     public int getPontos() {
         return pontos;
     }
@@ -47,21 +61,6 @@ public class Personagem extends JFrame {
         //vidaBar
     }
 
-    public Personagem(String nome ,
-                      int id, javax.swing.JLabel barVida,
-                      javax.swing.JLabel barEnergia,
-                      javax.swing.JLabel nome3 ) 
-    {
-        this.nome = nome;
-        this.vida = 3;
-        this.energia = 3;
-        this.id = id;
-        this.barEnergia = barEnergia;
-        this.barVida = barVida;
-        this.nome3 = nome3;
-        this.pontos = 0;
-        
-    }
 
     public JLabel getBarVida() {
         return barVida;

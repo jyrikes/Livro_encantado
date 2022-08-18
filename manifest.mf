@@ -1,3 +1,37 @@
 Manifest-Version: 1.0
 X-COMMENT: Main-Class will be added automatically by build
 
+<<<<<<< HEAD
+=======
+historia do livro 
+.....
+   ...... 
+      ........
+Terra de Nor 2000 anos depois da Era de Vemptor ......
+O livro do tempo repousava sobre a proteção da árvore sagrada , quando suas páginas correram em direção as planíceis 
+do sul ....
+
+2020 do tempo comum ....
+     O despertador toca fff
+     Acordar ?
+     se sim ______    
+            adicionar 5 pontos ao contador 
+            continua história normal 
+     se não_____
+            Não adicinar pontos 
+            César algusto o imperador precisa de UMA casa , você ficou preso num sono profundo , decifre a senha pra despertar !
+            Tés óú oàó tés éít á rúétuàó , éú tóú ó áúuós !
+            Você está sonhando ?
+
+    ----História 
+        Você olha para fora do quarto e vê um livro estranho você vai pegar o livro ?
+        se sim ______
+          adicionar 0 ponto ao contador 
+          https://i.ytimg.com/vi/xB_O0Adpm80/maxresdefault.jpg
+          o livro se abre no país em que as pessoas viraram pedras por causa de um vulcão. Qual o país?
+            respondeu certo adicionar 5 pontos
+          se não _______
+           adicionar 3 pontos 
+
+           
+>>>>>>> cd460978d88e0eef75ffd0b5cf34e4ddf3acb7ca

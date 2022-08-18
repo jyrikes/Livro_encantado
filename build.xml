@@ -7,8 +7,13 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
+<<<<<<< HEAD
 <project name="MagicBook" default="default" basedir=".">
     <description>Builds, tests, and runs the project MagicBook.</description>
+=======
+<project name="book" default="default" basedir=".">
+    <description>Builds, tests, and runs the project book.</description>
+>>>>>>> cd460978d88e0eef75ffd0b5cf34e4ddf3acb7ca
     <import file="nbproject/build-impl.xml"/>
     <!--
 
@@ -41,8 +46,12 @@
         </target>
 
     For list of available properties check the imported 
+<<<<<<< HEAD
     nbproject/build-impl.xml file. 
 
+=======
+    nbproject/build-impl.xml file. j
+>>>>>>> cd460978d88e0eef75ffd0b5cf34e4ddf3acb7ca
 
     Another way to customize the build is by overriding existing main targets.
     The targets of interest are: 
@@ -58,7 +67,11 @@
 
     An example of overriding the target for project execution could look like this:
 
+<<<<<<< HEAD
         <target name="run" depends="MagicBook-impl.jar">
+=======
+        <target name="run" depends="book-impl.jar">
+>>>>>>> cd460978d88e0eef75ffd0b5cf34e4ddf3acb7ca
             <exec dir="bin" executable="launcher.exe">
                 <arg file="${dist.jar}"/>
             </exec>

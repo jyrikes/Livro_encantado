@@ -3,7 +3,11 @@
     <type>org.netbeans.modules.java.j2seproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
+<<<<<<< HEAD
             <name>MagicBook</name>
+=======
+            <name>book</name>
+>>>>>>> cd460978d88e0eef75ffd0b5cf34e4ddf3acb7ca
             <source-roots>
                 <root id="src.dir"/>
             </source-roots>

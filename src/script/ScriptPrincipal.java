@@ -1,13 +1,12 @@
 
 package script;
-
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.swing.JButton;
-import javax.xml.transform.Source;
-
+//import javax.swing.JButton;
+//import javax.xml.transform.Source;
 import historia.Capitulo;
+import historia.Escolhas;
 import historia.Personagem;
 import telas.TelaPricipal;
 
@@ -17,34 +16,31 @@ import telas.TelaPricipal;
  */
 public class ScriptPrincipal {
     TelaPricipal tela;
-    Scanner scam;
+     Scanner scam;
     
    
 
     
     public ScriptPrincipal(TelaPricipal tela) {
         
-     
-
-
-
-
-
-
 
     //tela.scam = new Scanner(tela.ler.getText());
 
         System.out.println("tela iniciou");
        // System.out.println(tela.btscam.nextLine());
         this.tela = tela;
+        
         logica();
 
     }
 
     public void logica(){
-        
-    
+       
+        //String a = scam.nextLine();
+
+    ///Personagens
         Personagem personagem = new Personagem("Protagonista", 1, tela.vidaBar1, tela.energiaBar1,tela.nome3);
+        Personagem antagonista = new Personagem("Antagonista", 2, tela.vidaBar3, tela.energiaBar3, tela.nome4);
         
         ///HISTÓRIA
         ///CAPITULO 1
@@ -72,16 +68,16 @@ public class ScriptPrincipal {
                              
                                                                       Acordar?
                                                   """,
-                                          escolha1, 
+                                          
                                           personagem,
                                           0,
                                         0,
-                                          tela.texto);
+                                          tela);
 
       ///CAPITULO 2 
 
        String[] escolha2 = {"-SIM","-NÃO"};
-       Capitulo capitulo2 = new Capitulo("Capitulo2",
+       Capitulo primeiroSim = new Capitulo("Primeiro Sim",
        """                     
         ╔══╗ 
          ║██║ \
@@ -98,16 +94,16 @@ esquisito na mesa de jantar .
 Você olha para fora do quarto e vê um livro estranho 
 você vai pegar o livro ? )
                 """, 
-                escolha2,
+                
                 personagem, 
                 0, 
                 0, 
-                tela.texto);
+                tela);
 
 
     ///CAPITULO 3
     String[] escolhas3 = {"-itália","-Brasil","-Alemanha"};
-    Capitulo capitulo3 = new Capitulo("Capitulo 3",
+    Capitulo segundoSim = new Capitulo("Capitulo 3",
     """
                          
         Você ainda está sonolento por isso perdeu 1 ponto de energia 
@@ -127,15 +123,15 @@ você vai pegar o livro ? )
         .....
         
               """,
-               escolhas3, 
+               
                personagem,
                 0, 
                 -1, 
-                tela.texto);
+                tela);
 
 ////CAPITULO 4
         String[] escolhas4 ={"sócrates","platão","aristóteles"};
-        Capitulo capitulo4 = new Capitulo("Capitulo4", """
+        Capitulo primeiroNao = new Capitulo("PrimeiroNao", """
                          
             .............................................
             Você escuta barulhos muito altos dentro da sua própria 
@@ -148,8 +144,12 @@ você vai pegar o livro ? )
             decifre a senha pra despertar !
             
             DICA: Tó tfj rvf obeb tfj ! Tpv p bvups !
-            """, escolhas4, personagem, -1, 0, tela.texto);
+            """, personagem, -1, 0, tela);
 
+    //CAPITULO 5
+
+
+   
     String[] escolha5 = null;
     Capitulo final1 = new Capitulo("PrimeiroFinal", 
     "\n_¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶\n" +
@@ -187,7 +187,7 @@ você vai pegar o livro ? )
    +"""
                          VOCÊ GANHOU O PODER DE VIAJAR NO TEMPO E ENTRE REINOS
                          AGORA VOCÊ É UM VIAJANTE DO TEMPO !!
-                         """, escolha5 , personagem, +3, +3, tela.texto);
+                         """, personagem, +3, +3, tela);
     Capitulo final2 = new Capitulo("Segundo final", 
     "\n_________________¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶__________________\n" +
 "_____________¶¶¶________________¶¶¶_______________\n" +
@@ -223,7 +223,7 @@ você vai pegar o livro ? )
                            SE ALIANDO AS TROPAS DE RESISTÊNCIA 
                            CONTRA A TIRANIA DO REI VEMPTOR ...
                               A ALIANÇA VENCEU E VC FOI COROADO REI DE NOR !!!
-                         """, null, personagem, 3, 0,tela.texto);
+                         """, personagem, 3, 0,tela);
     Capitulo final3 = new Capitulo("Terceiro final", 
     
     "\n───────▄█──────────█─────────█▄───────\n" +
@@ -254,124 +254,172 @@ você vai pegar o livro ? )
     "────────▀█████████▀▀█████████▀────────\n" +
     "──────────▀███▀────────▀███▀──────────\n"+
     ""
-                        + "VOCÊ FICOU SEM ENERGIA POR ISSO PERDEU TODA A VIDA !!", null, personagem, 0, 0, tela.texto);
+                        + "VOCÊ FICOU SEM ENERGIA POR ISSO PERDEU TODA A VIDA !!", personagem, 0, 0, tela);
 
 
+     Capitulo final4 = new Capitulo("4º Final", 
+     "\n▒▒▒▒▒▒▒▒▒▒▒▄▄▄▄░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+    "▒▒▒▒▒▒▒▒▒▄██████▒▒▒▒▒▄▄▄█▄▒▒▒▒▒▒▒▒▒▒\n" +
+    "▒▒▒▒▒▒▒▄██▀░░▀██▄▒▒▒▒████████▄▒▒▒▒▒▒\n" +
+    "▒▒▒▒▒▒███░░░░░░██▒▒▒▒▒▒█▀▀▀▀▀██▄▄▒▒▒\n" +
+    "▒▒▒▒▒▄██▌░░░░░░░██▒▒▒▒▐▌▒▒▒▒▒▒▒▒▀█▄▒\n" +
+    "▒▒▒▒▒███░░▐█░█▌░██▒▒▒▒█▌▒▒▒▒▒▒▒▒▒▒▀▌\n" +
+    "▒▒▒▒████░▐█▌░▐█▌██▒▒▒██▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+    "▒▒▒▐████░▐░░░░░▌██▒▒▒█▌▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+    "▒▒▒▒████░░░▄█░░░██▒▒▐█▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+    "▒▒▒▒████░░░██░░██▌▒▒█▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+    "▒▒▒▒████▌░▐█░░███▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+    "▒▒▒▒▐████░░▌░███▒▒▒██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+    "▒▒▒▒▒████░░░███▒▒▒▒█▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+    "▒▒▒██████▌░████▒▒▒██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+    "▒▐████████████▒▒███▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+    "▒█████████████▄████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+    "██████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+    "██████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+    "█████████████████▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+    "█████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+    "████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n" +
+    "████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n"+
+               
+               "VOCÊ PERDEU UMA VIDA CONGELADO !!", personagem, -1, 0, tela);
 
-       capitulo1.displayCapitulo(tela.energiaBar1, tela.vidaBar1);
-       
-       int idEscolha = capitulo1.getIdEscolha();
-        idEscolha = 0;
-
-       if(idEscolha == 0 && capitulo1.personagem.temEnergia() && capitulo1.personagem.temVida() ){
+    String[]  escolhas6 ={"idade", "ideia","alfabeto"};
+    Capitulo charada1 = new Capitulo("Charada 1",
+    """
+                     
+        O rei tirano te encontrou e começa o duelo 
         
+        Responda as charadas para vencer !!
+        
+        Eu sou algo que as pessoas amam ou odeiam.
+        Eu mudo tanto a aparência das pessoas quanto seus pensamentos.
+        Se uma pessoa cuida de si mesma, eu subo ainda mais. 
+        Eu engano algumas pessoas. 
+        E para outras, sou um verdadeiro mistério. 
+        Algumas pessoas bem que tentam me esconder,
+        mas uma hora, inevitavelmente, eu apareço. 
+        Não importa o que as pessoas tentem, eu jamais cairei.
+        Quem sou eu?
+        
+        """, personagem, 0, 0, tela);
+
+    Capitulo charada2 = new Capitulo("Segunda charada ", """
+        \nEu posso guardar tudo dentro de mim. 
+        Tudo o que você pode imaginar:
+         o vento, as florestas, o mundo, o universo e até Deus.
+        Tudo o que vier à sua cabeça você pode encontrar dentro de mim.
+           Quem sou eu?
             
-            capitulo1.personagem.setPontos( capitulo1.personagem.getPontos()+1);
-            capitulo2.displayCapitulo(tela.energiaBar1, tela.vidaBar1);
-
-            idEscolha = capitulo2.getIdEscolha();
-
-            idEscolha =0;
-
-              if(idEscolha == 0 && capitulo2.personagem.temEnergia() && capitulo2.personagem.temVida() ){
-                
-                capitulo2.personagem.setPontos( capitulo2.personagem.getPontos()+1);
-                capitulo3.displayCapitulo(tela.energiaBar1, tela.vidaBar1);
-                idEscolha = capitulo2.getIdEscolha();
-
-                if(idEscolha ==0 && capitulo3.personagem.temEnergia()&& capitulo3.personagem.temVida() ){
-                   
-                    capitulo3.personagem.setPontos( capitulo3.personagem.getPontos()+1);
-                    finais(final2);
-
-                }
-                
-    
-              }
-
-       }
-       else if(idEscolha == 1 && capitulo1.personagem.temEnergia() && capitulo1.personagem.temVida() ) {
-        capitulo1.personagem.setPontos( capitulo1.personagem.getPontos()-1);
-        capitulo4.displayCapitulo(tela.energiaBar1, tela.vidaBar1);
-        idEscolha =0;
-        if(idEscolha == 0 && capitulo1.personagem.temEnergia() && capitulo1.personagem.temVida()){
-            capitulo4.personagem.setPontos( capitulo1.personagem.getPontos()-1);
-            System.out.println(capitulo4.personagem.getPontos());
-            finais( final1);
-        }
-
-       }
+            """, personagem, 0, 0, tela);
 
 
+    String[] escolhas7 ={"Sim","Não"};
+    Capitulo chamado = new Capitulo("Chamado","""
+        \nO home se aproxima sem dizer o nome misteriosamente 
+        ele desaparece e aparece na sua frente e fala:
         
-       
-    
-    
-      }
-      public void finais( Capitulo capitulo){
+        --- Eu preciso de você 
         
-            capitulo.displayCapitulo(tela.energiaBar1, tela.vidaBar1);
-            
-        }
+        Nesse momento você sente seu corpo viajando e do nada 
+        aparece em um lago congelado , em frente a esse lago 
+        você via uma lamparina a gás e o homem fala:
+        
+        --- Não se mova ..
+        
+        Você o obedece ?
+        
+        """, personagem, 0, 0, tela);
+
+
+     Capitulo respErrado = new Capitulo("Resposta errada", """
+        A sua resposta está errada por isso você perdeu 1 vida e 1 energia !
+     """, personagem, -1, -1, tela);
+
+     
+    
+//ESCOLHAS
+          
+          capitulo1.escolhas.add(new Escolhas("SIM", primeiroSim));
+          capitulo1.escolhas.add(new Escolhas("NÃO", primeiroNao));
+          primeiroSim.escolhas.add(new Escolhas("itália", final2));
+          primeiroSim.escolhas.add(new Escolhas("Brasil", chamado));
+          primeiroSim.escolhas.add(new Escolhas("Alemanha", chamado));
+          primeiroNao.escolhas.add(new Escolhas("sócrates",final1));
+          primeiroNao.escolhas.add(new Escolhas("aristoteles",final1 ));
+          Capitulo raiz = capitulo1;
+          raiz.displayCapitulo(tela.energiaBar1,tela.vidaBar3);
+
+
+
+         
+          System.out.println("continuo");
+          
+
+
+
+    
+
+
+     
+   
+     
+
 
       
-      public void action(){
-        
-        tela.enviar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enviarActionPerformed(evt);
-            }
-        });
-      }
+    //  public void action(){
+    //    
+    //    tela.enviar.addActionListener(new java.awt.event.ActionListener() {
+    //        public void actionPerformed(java.awt.event.ActionEvent evt) {
+    //            enviarActionPerformed(evt);
+    //        }
+    //    });
+    //  }
      
    
      
 
     
     
-    public void enviarActionPerformed(java.awt.event.ActionEvent evt) {
-        System.out.println("Botão apertado");
+    //public void enviarActionPerformed(java.awt.event.ActionEvent evt) {
+    //    System.out.println("Botão apertado");
+//
+    //        tela.controle.alterarSelecao((JButton)evt.getSource(),true);
+    //        System.out.println(tela.controle.b);
+    //        tela.textoLido = scam.nextLine();
+//
+////
+//
+    //        //((JButton) evt.getSource()).setName("Apertado");       
+    // }
 
-            tela.controle.alterarSelecao((JButton)evt.getSource(),true);
-            System.out.println(tela.controle.b);
-            tela.textoLido = scam.nextLine();
-
-
-
-            //((JButton) evt.getSource()).setName("Apertado");       
-     }
-
-     public void test(){
-       
-            action();
-            tela.controle.b = false;
-            System.out.println(tela.controle.b);
-
-            
-
-        
-        //System.out.println("Apertado");
-     }
+      //  public void test(){
+      //  
+      //          action();
+      //          tela.controle.b = false;
+      //          System.out.println(tela.controle.b);
+      //      
+      //      //System.out.println("Apertado");
+      //  }
   
-     public String l(){
-        System.out.println("Ligar scanner");
-        String nome = scam.nextLine();
-        System.out.println("passpi");
-        System.out.println(nome);
-        
-        while(nome.equals(null) || nome.equals(" ")){
-            System.out.println("procurando");
-            if(tela.controle.b == true){
-                nome = scam.nextLine();
-               System.out.println(nome);
-
-            }
-             
-
-        }
-        return nome;
-     }
+      //public String l(){
+      //System.out.println("Ligar scanner");
+      //  String nome = scam.nextLine();
+     //   System.out.println("passpi");
+      //  System.out.println(nome);
+      //  
+      //  while(nome.equals(null) || nome.equals(" ")){
+      //      System.out.println("procurando");
+      //      if(tela.controle.b == true){
+     //           nome = scam.nextLine();
+     //          System.out.println(nome);
+//
+     //       }
+     //        
+//
+    //    }
+    //    return nome;
+    // }
    
     
     }
-
+}

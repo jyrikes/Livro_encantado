@@ -1,11 +1,12 @@
 
 package telas;
 
-import java.awt.event.ActionEvent;
+
 import java.util.Scanner;
+import javax.swing.JComboBox;
 
-import javax.swing.JButton;
-
+import historia.Capitulo;
+import historia.Escolhas;
 import script.ControleBotoeSelecionados;
 import script.ScriptPrincipal;
 
@@ -36,9 +37,10 @@ public class TelaPricipal extends javax.swing.JFrame {
 
     public TelaPricipal() {
         super("MagicBoook");
+        //this.textoLido= "";
         initComponents();
          
-         btscam = new Scanner(enviar.getName());
+        // btscam = new Scanner(enviar.getName());
         
     }
 
@@ -49,13 +51,14 @@ public class TelaPricipal extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents(){
+    private void initComponents() {
+
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         texto = new javax.swing.JTextArea();
-        ler = new javax.swing.JTextField();
         enviar = new javax.swing.JButton();
         reiniciar = new javax.swing.JButton();
+        JComboBox<String> jComboBox1 = new javax.swing.JComboBox<String>();
         jPanel4 = new javax.swing.JPanel();
         energiaBar1 = new javax.swing.JLabel();
         vidaBar1 = new javax.swing.JLabel();
@@ -67,6 +70,7 @@ public class TelaPricipal extends javax.swing.JFrame {
         energiaBar3 = new javax.swing.JLabel();
         vidaBar3 = new javax.swing.JLabel();
         nome4 = new javax.swing.JLabel();
+       
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -82,15 +86,6 @@ public class TelaPricipal extends javax.swing.JFrame {
         texto.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane1.setViewportView(texto);
 
-        ler.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
-        ler.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ler.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        ler.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lerActionPerformed(evt);
-            }
-        });
-
         enviar.setBackground(new java.awt.Color(255, 124, 26));
         enviar.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         enviar.setForeground(new java.awt.Color(255, 255, 255));
@@ -105,7 +100,7 @@ public class TelaPricipal extends javax.swing.JFrame {
         });
         enviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actionPerformed(evt);
+                enviarActionPerformed(evt);
             }
         });
         enviar.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -119,11 +114,21 @@ public class TelaPricipal extends javax.swing.JFrame {
         reiniciar.setForeground(new java.awt.Color(255, 255, 255));
         reiniciar.setText("REINICIAR");
         reiniciar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actionPerformed(evt);
+            public void actionPerformed(java.awt.event.ActionEvent evt){
+             actionPerformed(evt);
             }
         });
 
+        
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        
+       
+        
+        //
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -132,8 +137,9 @@ public class TelaPricipal extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ler)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                     //   .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
                         .addComponent(enviar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(reiniciar)
@@ -146,14 +152,16 @@ public class TelaPricipal extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(reiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(enviar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ler, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(enviar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                    //   .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(39, 39, 39))
-        );
+        )));
 
         jPanel4.setBackground(new java.awt.Color(1, 3, 42));
 
@@ -272,22 +280,36 @@ public class TelaPricipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 10, Short.MAX_VALUE))
         );
+        //j//ComboBox1.addItem("oi");
+        //jComboBox1.addItem("o11i");
+        //jComboBox1.removeAllItems();
+        //jComboBox1.setBounds(30, 660,500, 100);
+        //jComboBox1.setFont(new java.awt.Font("SansSerif", 0, 24));
+        //System.out.println(jComboBox1);
+        //jPanel1.add(jComboBox1);
+        
+        
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void lerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lerActionPerformed
-        
-    }//GEN-LAST:event_lerActionPerformed
 
     private void enviarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviarMouseClicked
        
     }//GEN-LAST:event_enviarMouseClicked
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
    
     private void enviarPropertyChange(java.beans.PropertyChangeEvent evt) {
+    }
+    public void enviarActionPerformed(java.awt.event.ActionEvent evt) {
+        
+        Capitulo.cb.getCapitulo().acaoEscolher(Capitulo.cb.getCapitulo());
+      
     }
 
 
@@ -339,10 +361,10 @@ public class TelaPricipal extends javax.swing.JFrame {
     public javax.swing.JLabel energiaBar1;
     public javax.swing.JLabel energiaBar3;
     public javax.swing.JButton enviar;
+    public javax.swing.JComboBox<String> jComboBox1;
     public javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel4;
     public javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTextField ler;
     public javax.swing.JLabel nome3;
     public javax.swing.JLabel nome4;
     public javax.swing.JButton reiniciar;
