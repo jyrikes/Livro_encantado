@@ -45,7 +45,7 @@ public class ScriptPrincipal {
         ///HISTÓRIA
         ///CAPITULO 1
     
-        String[] escolha1 = {"-SIM","-NÃO"};
+        //String[] escolha1 = {"-SIM","-NÃO"};
         Capitulo capitulo1 = new Capitulo("Capitulo 1",
                                           
         """ 
@@ -76,7 +76,7 @@ public class ScriptPrincipal {
 
       ///CAPITULO 2 
 
-       String[] escolha2 = {"-SIM","-NÃO"};
+       //String[] escolha2 = {"-SIM","-NÃO"};
        Capitulo primeiroSim = new Capitulo("Primeiro Sim",
        """                     
         ╔══╗ 
@@ -102,7 +102,7 @@ você vai pegar o livro ? )
 
 
     ///CAPITULO 3
-    String[] escolhas3 = {"-itália","-Brasil","-Alemanha"};
+   // String[] escolhas3 = {"-itália","-Brasil","-Alemanha"};
     Capitulo segundoSim = new Capitulo("Capitulo 3",
     """
                          
