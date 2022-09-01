@@ -1,8 +1,10 @@
 ﻿package historia;
 
+import java.io.Serializable;
 import java.util.Objects;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import historia.Pessoa;
 
 
 /*
@@ -14,34 +16,59 @@ import javax.swing.JLabel;
  *
  * @author JYrik
  */
-public class Personagem extends JFrame {
-    String nome;
-    int vida = 3;
-    int energia = 3;
-    int id;
-    int pontos;
+public class Personagem extends JFrame implements Serializable {
+    private static final long serialVersionUID = 1L;
+    public Pessoa p = new Pessoa();
+
     
+
+
+    String nome = p.getNome();
+    int vida = p.vida;
+    int energia = p.energia;
+    int id = p.id;
+    int pontos;
     boolean alive;
+   
+   
+
+   
+   
+
+
     javax.swing.JLabel barVida;
     javax.swing.JLabel barEnergia;
     javax.swing.JLabel nome3;
+    
 
     
    ///Preciso refatorar pra mais de um personagem !!!
     public Personagem(String nome ,
-                      int id, javax.swing.JLabel barVida,
-                      javax.swing.JLabel barEnergia,
-                      javax.swing.JLabel nome3 ) 
+                      int id ) 
     {
-        this.nome = nome;
-        this.vida = 3;
-        this.energia = 3;
-        this.id = id;
-        this.barEnergia = barEnergia;
-        this.barVida = barVida;
-        this.nome3 = nome3;
+        p.setNome(nome);
+        p.vida = 3;
+        p.energia = 3;
+        p.id = id;
         this.pontos = 0;
         
+    }
+    public void setComponentesVisuais(javax.swing.JLabel barVida,javax.swing.JLabel barEnergia, javax.swing.JLabel nome3){
+        this.barVida = barVida;
+        this.barEnergia = barEnergia;
+        this.nome3 = nome3;
+        
+    }
+    public String[] getInfo(){
+
+        String nome = getNome();
+        String  vida = Integer.toString(getVida());
+        String energia =Integer.toString(getEnergia());
+        String isAlive =Boolean.toString(isAlive());
+        String[] informacaoPersonagem = {nome,vida,energia,isAlive};
+        return informacaoPersonagem;
+
+
     }
 
     public int getPontos() {
@@ -52,10 +79,10 @@ public class Personagem extends JFrame {
     }
 
     public boolean  isAlive(){
-     return alive;
+     return p.alive;
 }
     public void serAlive(boolean alive){
-        this.alive = alive;
+        p.alive = alive;
     }
     public void a (String id){
         //vidaBar
@@ -79,15 +106,15 @@ public class Personagem extends JFrame {
     }
 
     public String getNome() {
-        return nome;
+        return p.getNome();
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        p.setNome(nome);
     }
 
     public int getVida() {
-        return vida;
+        return this.vida;
     }
 
     public void setVida(int vida) {
@@ -95,7 +122,7 @@ public class Personagem extends JFrame {
     }
 
     public int getEnergia() {
-        return energia;
+        return this.energia;
     }
 
     public void setEnergia(int energia) {
@@ -103,11 +130,11 @@ public class Personagem extends JFrame {
     }
 
     public int getId() {
-        return id;
+        return p.id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        p.id = p.id;
     }
     
     
@@ -118,20 +145,22 @@ public class Personagem extends JFrame {
             
             case 1 -> {
                 barVida.setText(" ❤");
-                this.vida = 1;
+                p.vida = vida;
+                
             }
             case 0 ->{
                 barVida.setText(" ");
-                this.alive = false;
+                p.alive = false;
             }
             case 2 -> {
                 barVida.setText(" ❤ ❤");
-                this.vida = 2;
+                p.vida = vida;
 
             }
             case 3->{
                 barVida.setText(" ❤ ❤ ❤ ");
-                this.vida = 3;
+                p.vida = vida;
+               
             }
         
             default -> {
@@ -140,22 +169,27 @@ public class Personagem extends JFrame {
     }
     public void displayStatusEnergia(int energia, javax.swing.JLabel barEnergia){
         switch (energia) {
+           
             case 1 -> {
                 barEnergia.setText(" ✨");
-                this.energia = 1;
+                p.energia = energia;
+                
             }
             case 0 ->{
                 barEnergia.setText(" ");
-                this.energia = 0;
+                p.energia = energia;
+                
             }
             case 2 -> {
                 barEnergia.setText(" ✨ ✨");
-                this.energia = 2;
+                p.energia = energia;
+                
 
             }
             case 3->{
                 barEnergia.setText(" ✨ ✨ ✨ ");
-                this.energia = 3;
+                p.energia = energia;
+                
             }
         
             default -> {
@@ -163,9 +197,13 @@ public class Personagem extends JFrame {
          }
     }
     public void displayPersonagem(int energia,int vida, javax.swing.JLabel barVida,javax.swing.JLabel barEnergia){
+        System.out.println(this.energia);
         this.diplayStatusVida(this.vida,barVida);
         this.displayStatusEnergia(this.energia, barEnergia);
-        this.setNome(this.getNome());
+        this.setNome(p.getNome());
+        nome3.setText(p.getNome());
+
+
     }
     public boolean temEnergia(){
         boolean temEnergia;

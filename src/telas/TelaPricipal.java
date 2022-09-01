@@ -2,24 +2,28 @@
 package telas;
 
 
+import java.awt.event.ActionEvent;
+import java.io.Serializable;
 import java.util.Scanner;
 import javax.swing.JComboBox;
 
 import historia.Capitulo;
 import historia.Escolhas;
 import script.ControleBotoeSelecionados;
-import script.ScriptPrincipal;
+import script.CarregadorDoTexto;
 
 /**
  *
  * @author JYrik
  */
-public class TelaPricipal extends javax.swing.JFrame {
+public class TelaPricipal extends javax.swing.JFrame implements Serializable {
 
     /**
      * Creates new form TelaPricipal
      */
    
+    private static final long serialVersionUID = 1L;
+
     public ControleBotoeSelecionados controle;
     public Scanner terminal;
     public  Scanner scam;
@@ -80,7 +84,7 @@ public class TelaPricipal extends javax.swing.JFrame {
 
         texto.setBackground(new java.awt.Color(242, 235, 235));
         texto.setColumns(20);
-        texto.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        texto.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
         texto.setLineWrap(true);
         texto.setRows(5);
         texto.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -115,7 +119,14 @@ public class TelaPricipal extends javax.swing.JFrame {
         reiniciar.setText("REINICIAR");
         reiniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt){
-             actionPerformed(evt);
+             reiniciarActionPerformed(evt);
+            }
+
+            private void reiniciarActionPerformed(ActionEvent evt) {
+                texto.setText("");
+                CarregadorDoTexto.raiz.displayCapitulo(CarregadorDoTexto.raiz.personagem.getBarVida(), CarregadorDoTexto.raiz.personagem.getBarEnergia());
+                CarregadorDoTexto.raiz.personagem.displayPersonagem(CarregadorDoTexto.raiz.personagem.getEnergia(), CarregadorDoTexto.raiz.personagem.getVida(), CarregadorDoTexto.raiz.personagem.getBarEnergia(), CarregadorDoTexto.raiz.personagem.getBarVida());
+
             }
         });
 
@@ -166,10 +177,10 @@ public class TelaPricipal extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(1, 3, 42));
 
         energiaBar1.setFont(new java.awt.Font("SansSerif", 0, 48)); // NOI18N
-        energiaBar1.setForeground(new java.awt.Color(255, 255, 0));
+        energiaBar1.setForeground(new java.awt.Color(255, 0, 0));
 
         vidaBar1.setFont(new java.awt.Font("SansSerif", 0, 48)); // NOI18N
-        vidaBar1.setForeground(new java.awt.Color(255, 0, 0));
+        vidaBar1.setForeground(new java.awt.Color(255, 255, 0));
 
         vida1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         vida1.setForeground(new java.awt.Color(255, 255, 255));
@@ -180,8 +191,8 @@ public class TelaPricipal extends javax.swing.JFrame {
         energia1.setText("ENERGIA");
 
         nome3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        nome3.setForeground(new java.awt.Color(51, 0, 204));
-        nome3.setText("VOCÊ");
+        nome3.setForeground(new java.awt.Color(255, 255, 204));
+        nome3.setText("");
 
         vida3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         vida3.setForeground(new java.awt.Color(255, 255, 255));
@@ -198,7 +209,7 @@ public class TelaPricipal extends javax.swing.JFrame {
         vidaBar3.setForeground(new java.awt.Color(255, 255, 255));
 
         nome4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        nome4.setForeground(new java.awt.Color(51, 0, 204));
+        nome4.setForeground(new java.awt.Color(255, 255, 204));
         nome4.setText("VOCÊ");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -307,6 +318,10 @@ public class TelaPricipal extends javax.swing.JFrame {
     private void enviarPropertyChange(java.beans.PropertyChangeEvent evt) {
     }
     public void enviarActionPerformed(java.awt.event.ActionEvent evt) {
+
+
+        //como fazer que seja criado aq o combox/ botões  ???
+
         
         Capitulo.cb.getCapitulo().acaoEscolher(Capitulo.cb.getCapitulo());
       
@@ -348,7 +363,7 @@ public class TelaPricipal extends javax.swing.JFrame {
                 TelaPricipal tela =  new TelaPricipal();
                 tela.setVisible(true);
                 System.out.println("construindo script");
-                ScriptPrincipal script = new ScriptPrincipal(tela);
+                CarregadorDoTexto script = new CarregadorDoTexto(tela);
                 
             }
         });
@@ -356,13 +371,13 @@ public class TelaPricipal extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JLabel energia1;
-    public javax.swing.JLabel energia3;
-    public javax.swing.JLabel energiaBar1;
-    public javax.swing.JLabel energiaBar3;
-    public javax.swing.JButton enviar;
-    public javax.swing.JComboBox<String> jComboBox1;
-    public javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel energia1;
+    private javax.swing.JLabel energia3;
+    private javax.swing.JLabel energiaBar1;
+    private javax.swing.JLabel energiaBar3;
+    private javax.swing.JButton enviar;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel4;
     public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel nome3;
@@ -374,4 +389,139 @@ public class TelaPricipal extends javax.swing.JFrame {
     public javax.swing.JLabel vidaBar1;
     public javax.swing.JLabel vidaBar3;
     // End of variables declaration//GEN-END:variables
+    public javax.swing.JLabel getEnergia1() {
+        return energia1;
+    }
+
+    public void setEnergia1(javax.swing.JLabel energia1) {
+        this.energia1 = energia1;
+    }
+
+    public javax.swing.JLabel getEnergia3() {
+        return energia3;
+    }
+
+    public void setEnergia3(javax.swing.JLabel energia3) {
+        this.energia3 = energia3;
+    }
+
+    public javax.swing.JLabel getEnergiaBar1() {
+        return energiaBar1;
+    }
+
+    public void setEnergiaBar1(javax.swing.JLabel energiaBar1) {
+        this.energiaBar1 = energiaBar1;
+    }
+
+    public javax.swing.JLabel getEnergiaBar3() {
+        return energiaBar3;
+    }
+
+    public void setEnergiaBar3(javax.swing.JLabel energiaBar3) {
+        this.energiaBar3 = energiaBar3;
+    }
+
+    public javax.swing.JButton getEnviar() {
+        return enviar;
+    }
+
+    public void setEnviar(javax.swing.JButton enviar) {
+        this.enviar = enviar;
+    }
+
+    public javax.swing.JComboBox<String> getjComboBox1() {
+        return jComboBox1;
+    }
+
+    public void setjComboBox1(javax.swing.JComboBox<String> jComboBox1) {
+        this.jComboBox1 = jComboBox1;
+    }
+
+    public javax.swing.JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(javax.swing.JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public javax.swing.JPanel getjPanel4() {
+        return jPanel4;
+    }
+
+    public void setjPanel4(javax.swing.JPanel jPanel4) {
+        this.jPanel4 = jPanel4;
+    }
+
+    public javax.swing.JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(javax.swing.JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public javax.swing.JLabel getNome3() {
+        return nome3;
+    }
+
+    public void setNome3(javax.swing.JLabel nome3) {
+        this.nome3 = nome3;
+    }
+
+    public javax.swing.JLabel getNome4() {
+        return nome4;
+    }
+
+    public void setNome4(javax.swing.JLabel nome4) {
+        this.nome4 = nome4;
+    }
+
+    public javax.swing.JButton getReiniciar() {
+        return reiniciar;
+    }
+
+    public void setReiniciar(javax.swing.JButton reiniciar) {
+        this.reiniciar = reiniciar;
+    }
+
+    public javax.swing.JTextArea getTexto() {
+        return texto;
+    }
+
+    public void setTexto(javax.swing.JTextArea texto) {
+        this.texto = texto;
+    }
+
+    public javax.swing.JLabel getVida1() {
+        return vida1;
+    }
+
+    public void setVida1(javax.swing.JLabel vida1) {
+        this.vida1 = vida1;
+    }
+
+    public javax.swing.JLabel getVida3() {
+        return vida3;
+    }
+
+    public void setVida3(javax.swing.JLabel vida3) {
+        this.vida3 = vida3;
+    }
+
+    public javax.swing.JLabel getVidaBar1() {
+        return vidaBar1;
+    }
+
+    public void setVidaBar1(javax.swing.JLabel vidaBar1) {
+        this.vidaBar1 = vidaBar1;
+    }
+
+    public javax.swing.JLabel getVidaBar3() {
+        return vidaBar3;
+    }
+
+    public void setVidaBar3(javax.swing.JLabel vidaBar3) {
+        this.vidaBar3 = vidaBar3;
+    }
 }

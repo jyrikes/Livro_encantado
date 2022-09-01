@@ -12,6 +12,7 @@ public class ControleBotoeSelecionados {
     // Tinha criado antes um arquivo referenciasBoto~es classe que 
     //tinha attibutos um JButton e um boolena selecionado.
     
+    
     private Map<JButton,Boolean>ReferenciasBotoes;
 
     public ControleBotoeSelecionados() {
