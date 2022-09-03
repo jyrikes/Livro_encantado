@@ -19,16 +19,18 @@ import historia.Pessoa;
 public class Personagem extends JFrame implements Serializable {
     private static final long serialVersionUID = 1L;
     public Pessoa p = new Pessoa();
+    
+
 
     
 
 
-    String nome = p.getNome();
-    int vida = p.vida;
-    int energia = p.energia;
-    int id = p.id;
-    int pontos;
-    boolean alive;
+    private String nome = p.getNome();
+    private int vida = p.getVida();
+    private int energia = p.getEnergia();
+    private int id = p.getId();
+    private int pontos;
+    private boolean alive;
    
    
 
@@ -36,9 +38,9 @@ public class Personagem extends JFrame implements Serializable {
    
 
 
-    javax.swing.JLabel barVida;
-    javax.swing.JLabel barEnergia;
-    javax.swing.JLabel nome3;
+    private javax.swing.JLabel barVida;
+    private javax.swing.JLabel barEnergia;
+    private javax.swing.JLabel nome3;
     
 
     
@@ -47,11 +49,19 @@ public class Personagem extends JFrame implements Serializable {
                       int id ) 
     {
         p.setNome(nome);
-        p.vida = 3;
-        p.energia = 3;
-        p.id = id;
+        p.setVida(3);
+        p.setEnergia(3);
+        p.setId(id);
         this.pontos = 0;
         
+    }
+    public Personagem(Pessoa pessoa){
+        p.setNome(pessoa.getNome());
+        p.setEnergia(pessoa.getEnergia());
+        p.setVida(pessoa.getVida());
+        p.setId(pessoa.getId());
+        this.pontos = 0;
+
     }
     public void setComponentesVisuais(javax.swing.JLabel barVida,javax.swing.JLabel barEnergia, javax.swing.JLabel nome3){
         this.barVida = barVida;
@@ -79,10 +89,10 @@ public class Personagem extends JFrame implements Serializable {
     }
 
     public boolean  isAlive(){
-     return p.alive;
+     return p.isAlive();
 }
     public void serAlive(boolean alive){
-        p.alive = alive;
+        p.setAlive(alive);
     }
     public void a (String id){
         //vidaBar
@@ -130,36 +140,39 @@ public class Personagem extends JFrame implements Serializable {
     }
 
     public int getId() {
-        return p.id;
+        return p.getId();
     }
 
     public void setId(int id) {
-        p.id = p.id;
+        p.setId(id);
     }
     
-    
-    
+  
+    /**
+     * @param vida
+     * @param barVida
+     */
     public void diplayStatusVida (int vida, javax.swing.JLabel barVida ){
         switch (vida) {
             
             
             case 1 -> {
                 barVida.setText(" ❤");
-                p.vida = vida;
+                p.setVida(vida);
                 
             }
             case 0 ->{
                 barVida.setText(" ");
-                p.alive = false;
+                p.setAlive(false);
             }
             case 2 -> {
                 barVida.setText(" ❤ ❤");
-                p.vida = vida;
+                p.setVida(vida);
 
             }
             case 3->{
                 barVida.setText(" ❤ ❤ ❤ ");
-                p.vida = vida;
+                p.setVida(vida);
                
             }
         
@@ -172,23 +185,23 @@ public class Personagem extends JFrame implements Serializable {
            
             case 1 -> {
                 barEnergia.setText(" ✨");
-                p.energia = energia;
+                p.setEnergia(energia);
                 
             }
             case 0 ->{
                 barEnergia.setText(" ");
-                p.energia = energia;
+                p.setEnergia(energia);
                 
             }
             case 2 -> {
                 barEnergia.setText(" ✨ ✨");
-                p.energia = energia;
+                p.setEnergia(energia);
                 
 
             }
             case 3->{
                 barEnergia.setText(" ✨ ✨ ✨ ");
-                p.energia = energia;
+                p.setEnergia(energia);
                 
             }
         

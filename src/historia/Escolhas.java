@@ -1,9 +1,10 @@
 ﻿package historia;
 
 public class Escolhas {
-    String escolha;
-    Capitulo capituloEscolhido;
+    private String escolha;
+    private Capitulo capituloEscolhido;
    
+  
     public Escolhas(String escolhas, Capitulo capituloEscolhido ){
         this.escolha = escolhas;
         this.capituloEscolhido = capituloEscolhido;
@@ -12,8 +13,9 @@ public class Escolhas {
     public String getEscolha() {
         return escolha;
     }
-    public void setEscolha(String escolha) {
-        this.escolha = escolha;
+  
+    public Capitulo getCapituloEscolhido() {
+        return capituloEscolhido;
     }
     
 }

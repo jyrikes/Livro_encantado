@@ -1,0 +1,13 @@
+﻿[{
+  "nome": "Protagonista",
+  "vida": 3,
+  "energia": 3,
+  "id": 1,
+  "alive": false
+},{
+  "nome": "Antagonista",
+  "vida": 3,
+  "energia": 3,
+  "id": 2,
+  "alive": false
+}]

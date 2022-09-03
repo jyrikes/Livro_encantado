@@ -3,6 +3,7 @@ package telas;
 
 
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Scanner;
 import javax.swing.JComboBox;
@@ -25,11 +26,9 @@ public class TelaPricipal extends javax.swing.JFrame implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public ControleBotoeSelecionados controle;
-    public Scanner terminal;
-    public  Scanner scam;
-    public Scanner btscam;
+  
     
-    public String textoLido;
+    private String textoLido;
     public java.awt.event.ActionEvent evt;
     public String getTextoLido() {
         return textoLido;
@@ -124,8 +123,8 @@ public class TelaPricipal extends javax.swing.JFrame implements Serializable {
 
             private void reiniciarActionPerformed(ActionEvent evt) {
                 texto.setText("");
-                CarregadorDoTexto.raiz.displayCapitulo(CarregadorDoTexto.raiz.personagem.getBarVida(), CarregadorDoTexto.raiz.personagem.getBarEnergia());
-                CarregadorDoTexto.raiz.personagem.displayPersonagem(CarregadorDoTexto.raiz.personagem.getEnergia(), CarregadorDoTexto.raiz.personagem.getVida(), CarregadorDoTexto.raiz.personagem.getBarEnergia(), CarregadorDoTexto.raiz.personagem.getBarVida());
+                CarregadorDoTexto.raiz.displayCapitulo(CarregadorDoTexto.raiz.getPersonagem().getBarVida(), CarregadorDoTexto.raiz.getPersonagem().getBarEnergia());
+                CarregadorDoTexto.raiz.getPersonagem().displayPersonagem(CarregadorDoTexto.raiz.getPersonagem().getEnergia(), CarregadorDoTexto.raiz.getPersonagem().getVida(), CarregadorDoTexto.raiz.getPersonagem().getBarEnergia(), CarregadorDoTexto.raiz.getPersonagem().getBarVida());
 
             }
         });
@@ -323,7 +322,7 @@ public class TelaPricipal extends javax.swing.JFrame implements Serializable {
         //como fazer que seja criado aq o combox/ botões  ???
 
         
-        Capitulo.cb.getCapitulo().acaoEscolher(Capitulo.cb.getCapitulo());
+        Capitulo.getCb().getCapitulo().acaoEscolher(Capitulo.getCb().getCapitulo());
       
     }
 
@@ -363,7 +362,13 @@ public class TelaPricipal extends javax.swing.JFrame implements Serializable {
                 TelaPricipal tela =  new TelaPricipal();
                 tela.setVisible(true);
                 System.out.println("construindo script");
-                CarregadorDoTexto script = new CarregadorDoTexto(tela);
+                try {
+                    CarregadorDoTexto script = new CarregadorDoTexto(tela);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                
                 
             }
         });
@@ -378,16 +383,16 @@ public class TelaPricipal extends javax.swing.JFrame implements Serializable {
     private javax.swing.JButton enviar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
-    public javax.swing.JPanel jPanel4;
-    public javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JLabel nome3;
-    public javax.swing.JLabel nome4;
-    public javax.swing.JButton reiniciar;
-    public javax.swing.JTextArea texto;
-    public javax.swing.JLabel vida1;
-    public javax.swing.JLabel vida3;
-    public javax.swing.JLabel vidaBar1;
-    public javax.swing.JLabel vidaBar3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel nome3;
+    private javax.swing.JLabel nome4;
+    private javax.swing.JButton reiniciar;
+    private javax.swing.JTextArea texto;
+    private javax.swing.JLabel vida1;
+    private javax.swing.JLabel vida3;
+    private javax.swing.JLabel vidaBar1;
+    private javax.swing.JLabel vidaBar3;
     // End of variables declaration//GEN-END:variables
     public javax.swing.JLabel getEnergia1() {
         return energia1;

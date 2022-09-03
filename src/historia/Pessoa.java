@@ -6,10 +6,10 @@ public class Pessoa implements Serializable{
 
     private static final long serialVersionUID = 1L;
     private String nome;
-    public int vida =3;
-    public int energia =3;
-    public int id;
-    public boolean alive;
+    private int vida =3;
+    private int energia =3;
+    private int id;
+    private boolean alive;
 
     public String getNome() {
         return nome;

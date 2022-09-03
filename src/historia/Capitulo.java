@@ -15,22 +15,89 @@ import telas.TelaPricipal;
  */
 public class Capitulo implements Serializable {
     private static final long serialVersionUID = 1L;
-    public Historia h = new Historia();
+    public  Historia historia = new Historia();
+
 
     private TelaPricipal tela;
-    public String nome = h.nome;
-    public Personagem personagem;
-    public String texto = h.texto;
-    public ArrayList<Escolhas> escolhas;
-    public int altVida = h.altVida;
-    public int altEnergia = h.altEnergia;
-    public int idEscolha;
-    public static Combox cb;
+    private String nome = historia.getNome();
+    private Personagem personagem;
+    private String texto = historia.getTexto();
+    private ArrayList<Escolhas> escolhas;
+    private int altVida = historia.getAltVida();
+    private int altEnergia = historia.getAltEnergia();
+    private int idEscolha;
+    private static Combox cb;
+    private javax.swing.JLabel barVida;
+    private javax.swing.JLabel barEnergia;
+    private javax.swing.JTextArea area;
+
+    
+    public  Historia getHistoria() {
+        return historia;
+    }
+
+    public void setHistoria(Historia historia) {
+        this.historia = historia;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Personagem getPersonagem() {
+        return personagem;
+    }
+
+    public void setPersonagem(Personagem personagem) {
+        this.personagem = personagem;
+    }
+
+    public String getTexto() {
+        return texto;
+    }
+
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+
+    public ArrayList<Escolhas> getEscolhas() {
+        return escolhas;
+    }
+
+    public void setEscolhas(ArrayList<Escolhas> escolhas) {
+        this.escolhas = escolhas;
+    }
+
+    public int getAltVida() {
+        return altVida;
+    }
+
+    public void setAltVida(int altVida) {
+        this.altVida = altVida;
+    }
+
+    public int getAltEnergia() {
+        return altEnergia;
+    }
+
+    public void setAltEnergia(int altEnergia) {
+        this.altEnergia = altEnergia;
+    }
+
+    public static Combox getCb() {
+        return cb;
+    }
+
+    public static void setCb(Combox cb) {
+        Capitulo.cb = cb;
+    }
 
     /// componentes swing
-    javax.swing.JLabel barVida;
-    javax.swing.JLabel barEnergia;
-    public javax.swing.JTextArea area;
+    
 
     // Capitulo[] proximos;
     public int getIdEscolha() {
@@ -53,6 +120,7 @@ public class Capitulo implements Serializable {
 
     }
     
+    
     public Capitulo(String nome,
             String texto,
             Personagem personagem,
@@ -61,12 +129,13 @@ public class Capitulo implements Serializable {
             )
 
     {
-        h.nome = nome;
+        historia.setNome(nome);
         this.personagem = personagem;
-        h.texto = texto;
+        historia.setTexto(texto);
         this.escolhas = new ArrayList<>();
-        h.altVida = altVida;
-        h.altEnergia = altEnergia;
+        historia.setAltVida(altVida);
+        historia.setAltEnergia(altEnergia);
+        historia.setNomePersonagem(personagem.getName());
        
         
         // this.proximos = proximos;
@@ -76,11 +145,23 @@ public class Capitulo implements Serializable {
     public Capitulo(){
 
     }
-///colocar isso na clase personagem 
-    public void mudarPersonagem() {
-        personagem.setEnergia(personagem.p.getEnergia() + h.altEnergia);
-        personagem.setVida(personagem.p.getVida() + h.altVida);
+    public Capitulo(Historia h, Personagem personagem, TelaPricipal tela){
+        historia.setNome(h.getNome());
+        this.personagem = personagem;
+        historia.setTexto(h.getTexto());
+        this.escolhas = new ArrayList<>();
+        historia.setAltVida(h.getAltVida());
+        historia.setAltEnergia(h.getAltEnergia());
+        this.setTela(tela);
+        this.setArea(tela.getTexto());
     }
+
+///colocar isso na clase personagem 
+public void mudarPersonagem() {
+    personagem.setEnergia(personagem.p.getEnergia() + this.getHistoria().getAltEnergia());
+    personagem.setVida(personagem.p.getVida() + this.getHistoria().getAltVida());
+}
+
 
     public void displayCapitulo(javax.swing.JLabel barVida, javax.swing.JLabel barEnergia) {
         // Mexendo no personagem do capitulo
@@ -88,7 +169,7 @@ public class Capitulo implements Serializable {
         personagem.displayPersonagem(personagem.p.getEnergia(), personagem.p.getVida(), barVida, barEnergia);
         System.out.println(personagem.p.getEnergia());
 
-        area.append(h.texto + "\n");
+        area.append(historia.getTexto() + "\n");
 
         if (this.escolhas.size() > 0) {
 
@@ -120,7 +201,7 @@ public class Capitulo implements Serializable {
                 tela.setTextoLido(Capitulo.cb.comboBox.getSelectedItem().toString());
 
                 for (int i = 0; i < escolhas.size(); i++) {
-                    if (tela.textoLido.equals(escolhas.get(i).escolha))
+                    if (tela.getTextoLido().equals(escolhas.get(i).getEscolha()))
                         idEscolha = i;
                 }
 
@@ -139,11 +220,11 @@ public class Capitulo implements Serializable {
             System.out.println(i);
             // this.escolhas.get(i).capituloEscolhido.displayCapitulo(
             // this.escolhas.get(i).capituloEscolhido.barVida,this.escolhas.get(i).capituloEscolhido.barEnergia);
-            this.escolhas.get(i).capituloEscolhido.displayCapitulo(personagem.getBarEnergia(), personagem.getBarVida());
+            this.escolhas.get(i).getCapituloEscolhido().displayCapitulo(personagem.getBarEnergia(), personagem.getBarVida());
 
         }
         else{
-            CarregadorDoTexto.final3.displayCapitulo(tela.getEnergiaBar1(), tela.vidaBar1);
+            CarregadorDoTexto.final3.displayCapitulo(tela.getEnergiaBar1(), tela.getVidaBar1());
         }
 
     }

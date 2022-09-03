@@ -1,10 +1,14 @@
 
 package script;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 //import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,6 +16,7 @@ import javax.xml.transform.Source;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 //import javax.swing.JButton;
 //import javax.xml.transform.Source;
@@ -20,7 +25,6 @@ import historia.Escolhas;
 import historia.Historia;
 import historia.Personagem;
 import historia.Pessoa;
-import historia.Teste;
 import telas.TelaPricipal;
 
 /**
@@ -36,7 +40,7 @@ public class CarregadorDoTexto {
    
 
     
-    public CarregadorDoTexto(TelaPricipal tela) {
+    public CarregadorDoTexto(TelaPricipal tela) throws IOException {
         
 
     //tela.scam = new Scanner(tela.ler.getText());
@@ -50,48 +54,41 @@ public class CarregadorDoTexto {
     }
 
     /**
+     * @throws IOException
      * 
      */
-    public void carregar(){
+    public void carregar() throws IOException{
        
         //String a = scam.nextLine();
 
     ///Personagens
-        Personagem protagnista = new Personagem("Protagonista", 1);
-        protagnista.setComponentesVisuais(tela.vidaBar1, tela.getEnergiaBar1(),tela.nome3);
-        Personagem antagonista = new Personagem("Antagonista", 2);
-        antagonista.setComponentesVisuais(tela.vidaBar3, tela.getEnergiaBar3(), tela.nome4);
+
+    LeitorObjetos ler = new LeitorObjetos();
+    HashMap<String,Personagem> personagens = ler.lerPersonagensMap("rsc\\JsonFiles\\JsonPersonagens.json");
+    HashMap<String, Capitulo> capitulos = ler.lerCapitulosMap("rsc\\JsonFiles\\JsonCapitulos.json", personagens,tela);
+
+  
+
+       Personagem protagnista = personagens.get("Protagonista");
+       protagnista.setComponentesVisuais(tela.getVidaBar1(), tela.getEnergiaBar1(),tela.getNome3());
+       Personagem antagonista = new Personagem("Antagonista", 2);
+       antagonista.setComponentesVisuais(tela.getVidaBar3(), tela.getEnergiaBar3(), tela.getNome4());
+       System.out.println(capitulos.get("Capitulo 1").getTexto());
+       tela.getTexto().append(capitulos.get("Capitulo 1").getTexto());
+
+
+
+
+
+
+
         
         ///HISTÓRIA
         ///CAPITULO 1
+
     
         //String[] escolha1 = {"-SIM","-NÃO"};
-        Capitulo capitulo1 = new Capitulo("Capitulo 1",
-                                          
-        """ 
-                                            █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█ 
-                                            █---╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗--█ 
-                                            █---║║║╠─║─║─║║║║║╠─--█ 
-                                            █---╚╩╝╚╝╚╝╚╝╚╝╩─╩╚╝--█
-                                            █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
-                                            .........
-                                                                 ............
-                                                      .............
-                                            Terra de Nor 2000 anos depois da Era de Vemptor ......
-                                              
-                                                                   O livro do tempo repousava sobre 
-                                                                     a proteção da árvore sagrada ,
-                                                                        quando suas páginas correram em direção
-                                                                 as planícies do sul .....
-                                                    2020 do tempo comum .... 
-                                                                        O despertador toca 
-                             
-                                                                      Acordar?
-                                                  """,
-                                          
-                                          protagnista,
-                                          0,
-                                        0);
+        Capitulo capitulo1  = capitulos.get("Capitulo 1");
 
       ///CAPITULO 2 
 
@@ -424,21 +421,20 @@ você vai pegar o livro ? )
     
 //ESCOLHAS
           
-          capitulo1.escolhas.add(new Escolhas("SIM", primeiroSim));
-          capitulo1.escolhas.add(new Escolhas("NÃO", primeiroNao));
-          primeiroSim.escolhas.add(new Escolhas("SIM",segundoSim));
-          primeiroSim.escolhas.add(new Escolhas("Não", final5));
-          segundoSim.escolhas.add(new Escolhas("Alemanha", chamado));
-          segundoSim.escolhas.add(new Escolhas("itália", final1));
-          segundoSim.escolhas.add(new Escolhas("Brasil", chamado));
-          chamado.escolhas.add(new Escolhas("SIM", charada1));
-          chamado.escolhas.add(new Escolhas("NÃO", final4));
+          capitulo1.getEscolhas().add(new Escolhas("SIM", primeiroSim));
+          capitulo1.getEscolhas().add(new Escolhas("NÃO", primeiroNao));
+          primeiroSim.getEscolhas().add(new Escolhas("SIM",segundoSim));
+          primeiroSim.getEscolhas().add(new Escolhas("Não", final5));
+          segundoSim.getEscolhas().add(new Escolhas("Alemanha", chamado));
+          segundoSim.getEscolhas().add(new Escolhas("itália", final1));
+          segundoSim.getEscolhas().add(new Escolhas("Brasil", chamado));
+          chamado.getEscolhas().add(new Escolhas("SIM", charada1));
+          chamado.getEscolhas().add(new Escolhas("NÃO", final4));
           
-          primeiroNao.escolhas.add(new Escolhas("sócrates",final1));
-          primeiroNao.escolhas.add(new Escolhas("aristoteles",final3 ));
+          primeiroNao.getEscolhas().add(new Escolhas("sócrates",final1));
+          primeiroNao.getEscolhas().add(new Escolhas("aristoteles",final3 ));
           raiz = capitulo1;
-          Teste t1 = new Teste("jose",19);
-          Teste t2 = new Teste("maria",20);
+          
           
       
       
@@ -448,7 +444,8 @@ você vai pegar o livro ? )
     
           System.out.println("Criando Json");
 
-          ArrayList<Capitulo> lis = new ArrayList<Capitulo>();
+          LinkedList<Capitulo> lis = new LinkedList<Capitulo>();
+          //ArrayList<Capitulo> lis = new ArrayList<>();
           lis.add(capitulo1);
           lis.add(primeiroSim);
           lis.add(primeiroNao);
@@ -463,125 +460,29 @@ você vai pegar o livro ? )
           lis.add(final5);
           lis.add(respErrado);
           System.out.println("tentando gson");
+          System.out.println(lis);
      
-          for (Capitulo capitulo : lis) {
-             capitulo.setTela(tela);
-             capitulo.setArea(tela.texto);
-             
-          }
+         
           ArrayList<Personagem> personagensList = new ArrayList<Personagem>();
           personagensList.add(protagnista);
           personagensList.add(antagonista);
+          
+         
+      Escritor escritor = new Escritor();
+      escritor.escreverCapitulo("rsc\\JsonFiles\\JsonCapitulos.json", lis);
+      
+          
+      
       
       
      
-     try {
-        Pessoa pessoaPersonagem = protagnista.p;
-        Historia historiaDosCapitulos;
-
-       
-        Gson json = new GsonBuilder().setPrettyPrinting().create();
-        
-
-        FileWriter fileWriter = new FileWriter ("C:\\Users\\JYrik\\Documents\\NetBeansProjects.main\\MagicBook\\src\\historia\\file.json");
-
-        
-        for (Capitulo capitulo : lis) {
-            historiaDosCapitulos = capitulo.h;
-
-            String ca = json.toJson(historiaDosCapitulos);
-           
-           fileWriter.append(ca);
-       }
-        
-         
-        //fileWriter.write(ca);
-        fileWriter.flush();
-        fileWriter.close();
-
-    } catch (IOException e) {
-        // TODO Auto-generated catch block
-        System.out.println("erro na escrita");
-        e.printStackTrace();
-    }
-         
-          
-
-
-
-
-    raiz.displayCapitulo(raiz.personagem.getBarEnergia(),raiz.personagem.getBarVida());
+    
+    raiz.displayCapitulo(raiz.getPersonagem().getBarEnergia(),raiz.getPersonagem().getBarVida());
 
 
          
           System.out.println("continuo");
           
-
-
-
-    
-
-
-     
-
-     
-
-
-      
-    //  public void action(){
-    //    
-    //    tela.enviar.addActionListener(new java.awt.event.ActionListener() {
-    //        public void actionPerformed(java.awt.event.ActionEvent evt) {
-    //            enviarActionPerformed(evt);
-    //        }
-    //    });
-    //  }
-     
-   
-     
-
-    
-    
-    //public void enviarActionPerformed(java.awt.event.ActionEvent evt) {
-    //    System.out.println("Botão apertado");
-//
-    //        tela.controle.alterarSelecao((JButton)evt.getSource(),true);
-    //        System.out.println(tela.controle.b);
-    //        tela.textoLido = scam.nextLine();
-//
-////
-//
-    //        //((JButton) evt.getSource()).setName("Apertado");       
-    // }
-
-      //  public void test(){
-      //  
-      //          action();
-      //          tela.controle.b = false;
-      //          System.out.println(tela.controle.b);
-      //      
-      //      //System.out.println("Apertado");
-      //  }
-  
-      //public String l(){
-      //System.out.println("Ligar scanner");
-      //  String nome = scam.nextLine();
-     //   System.out.println("passpi");
-      //  System.out.println(nome);
-      //  
-      //  while(nome.equals(null) || nome.equals(" ")){
-      //      System.out.println("procurando");
-      //      if(tela.controle.b == true){
-     //           nome = scam.nextLine();
-     //          System.out.println(nome);
-//
-     //       }
-     //        
-//
-    //    }
-    //    return nome;
-    // }
-   
     
     }
 

@@ -5,11 +5,18 @@ import java.io.Serializable;
 public class Historia implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    public String nome;
-    public String texto;
-    public int altVida;
-    public int altEnergia;
+    private String nome;
+    private String texto;
+    private int altVida;
+    private int altEnergia;
+    private String nomePersonagem;
 
+    public String getNomePersonagem() {
+        return nomePersonagem;
+    }
+    public void setNomePersonagem(String nomePersonagem) {
+        this.nomePersonagem = nomePersonagem;
+    }
     public String getTexto() {
         return texto;
     }
