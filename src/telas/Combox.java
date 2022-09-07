@@ -15,7 +15,7 @@ public class Combox {
         
         this.comboBox = new javax.swing.JComboBox<String>();
         for (Escolhas escolha : escolhas) {              
-            this.comboBox.addItem(escolha.getEscolha());
+            this.comboBox.addItem(escolha.getConteudo().getEscolha());
         }
 
         this.comboBox.setBounds(30, 660,500, 100);

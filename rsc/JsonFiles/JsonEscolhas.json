@@ -1,0 +1,56 @@
+[{
+  "escolha": "SIM",
+  "nomeCapituloAtual": "Capitulo 1",
+  "nomeCapituloEscolhido": "Primeiro Sim",
+  "idEcolha": "1"
+},{
+  "escolha": "NÃO",
+  "nomeCapituloAtual": "Capitulo 1",
+  "nomeCapituloEscolhido": "PrimeiroNao",
+  "idEcolha": "2"
+},{
+  "escolha": "SIM",
+  "nomeCapituloAtual": "Primeiro Sim",
+  "nomeCapituloEscolhido": "Capitulo 3",
+  "idEcolha": "3"
+},{
+  "escolha": "Não",
+  "nomeCapituloAtual": "Primeiro Sim",
+  "nomeCapituloEscolhido": "Final 5",
+  "idEcolha": "4"
+},{
+  "escolha": "sócrates",
+  "nomeCapituloAtual": "PrimeiroNao",
+  "nomeCapituloEscolhido": "PrimeiroFinal",
+  "idEcolha": "10"
+},{
+  "escolha": "aristoteles",
+  "nomeCapituloAtual": "PrimeiroNao",
+  "nomeCapituloEscolhido": "Terceiro final",
+  "idEcolha": "11"
+},{
+  "escolha": "Alemanha",
+  "nomeCapituloAtual": "Capitulo 3",
+  "nomeCapituloEscolhido": "Chamado",
+  "idEcolha": "5"
+},{
+  "escolha": "itália",
+  "nomeCapituloAtual": "Capitulo 3",
+  "nomeCapituloEscolhido": "PrimeiroFinal",
+  "idEcolha": "6"
+},{
+  "escolha": "Brasil",
+  "nomeCapituloAtual": "Capitulo 3",
+  "nomeCapituloEscolhido": "Chamado",
+  "idEcolha": "7"
+},{
+  "escolha": "SIM",
+  "nomeCapituloAtual": "Chamado",
+  "nomeCapituloEscolhido": "Charada 1",
+  "idEcolha": "8"
+},{
+  "escolha": "NÃO",
+  "nomeCapituloAtual": "Chamado",
+  "nomeCapituloEscolhido": "4º Final",
+  "idEcolha": "9"
+}]

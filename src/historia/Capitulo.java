@@ -30,6 +30,7 @@ public class Capitulo implements Serializable {
     private javax.swing.JLabel barVida;
     private javax.swing.JLabel barEnergia;
     private javax.swing.JTextArea area;
+    
 
     
     public  Historia getHistoria() {
@@ -135,7 +136,7 @@ public class Capitulo implements Serializable {
         this.escolhas = new ArrayList<>();
         historia.setAltVida(altVida);
         historia.setAltEnergia(altEnergia);
-        historia.setNomePersonagem(personagem.getName());
+        historia.setNomePersonagem(this.getPersonagem().getNome());
        
         
         // this.proximos = proximos;
@@ -201,7 +202,7 @@ public void mudarPersonagem() {
                 tela.setTextoLido(Capitulo.cb.comboBox.getSelectedItem().toString());
 
                 for (int i = 0; i < escolhas.size(); i++) {
-                    if (tela.getTextoLido().equals(escolhas.get(i).getEscolha()))
+                    if (tela.getTextoLido().equals(escolhas.get(i).getConteudo().getEscolha()))
                         idEscolha = i;
                 }
 

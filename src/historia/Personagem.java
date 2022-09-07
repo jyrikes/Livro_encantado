@@ -60,6 +60,7 @@ public class Personagem extends JFrame implements Serializable {
         p.setEnergia(pessoa.getEnergia());
         p.setVida(pessoa.getVida());
         p.setId(pessoa.getId());
+        p.setAlive(true);
         this.pontos = 0;
 
     }
