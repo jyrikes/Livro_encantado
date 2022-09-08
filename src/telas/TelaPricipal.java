@@ -7,10 +7,12 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Scanner;
 import javax.swing.JComboBox;
+import javax.swing.JPanel;
 
 import historia.Capitulo;
 import historia.Escolhas;
 import script.ControleBotoeSelecionados;
+import script.Escritor;
 import script.CarregadorDoTexto;
 
 /**
@@ -89,13 +91,15 @@ public class TelaPricipal extends javax.swing.JFrame implements Serializable {
         texto.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane1.setViewportView(texto);
 
-        enviar.setBackground(new java.awt.Color(255, 124, 26));
+        enviar.setBackground(new java.awt.Color(122, 250, 26));
         enviar.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         enviar.setForeground(new java.awt.Color(255, 255, 255));
         enviar.setText("ENVIAR");
         enviar.setMultiClickThreshhold(1L);
         enviar.setName(""); // NOI18N
         enviar.setSelected(true);
+        enviar.setAlignmentX(CENTER_ALIGNMENT);
+        enviar.setAlignmentY(CENTER_ALIGNMENT);
         enviar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 enviarMouseClicked(evt);
@@ -116,16 +120,25 @@ public class TelaPricipal extends javax.swing.JFrame implements Serializable {
         reiniciar.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         reiniciar.setForeground(new java.awt.Color(255, 255, 255));
         reiniciar.setText("REINICIAR");
+        reiniciar.setBounds(300, 100, 30, 10);
+        //jPanel4.add(enviar);
         reiniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt){
              reiniciarActionPerformed(evt);
             }
+        
 
             private void reiniciarActionPerformed(ActionEvent evt) {
-                texto.setText("");
-                CarregadorDoTexto.raiz.displayCapitulo(CarregadorDoTexto.raiz.getPersonagem().getBarVida(), CarregadorDoTexto.raiz.getPersonagem().getBarEnergia());
-                CarregadorDoTexto.raiz.getPersonagem().displayPersonagem(CarregadorDoTexto.raiz.getPersonagem().getEnergia(), CarregadorDoTexto.raiz.getPersonagem().getVida(), CarregadorDoTexto.raiz.getPersonagem().getBarEnergia(), CarregadorDoTexto.raiz.getPersonagem().getBarVida());
-
+                Escritor escreve = new Escritor();
+                Capitulo c = Capitulo.getCb().getCapitulo();
+                try {
+                    escreve.escreverCapitulo("rsc\\JsonFiles\\loads\\loadCapitulo.json",c);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+           
+              
             }
         });
 
@@ -141,6 +154,7 @@ public class TelaPricipal extends javax.swing.JFrame implements Serializable {
         //
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
+        
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -152,7 +166,7 @@ public class TelaPricipal extends javax.swing.JFrame implements Serializable {
                         .addGap(47, 47, 47)
                         .addComponent(enviar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(reiniciar)
+                       .addComponent(reiniciar)
                         .addGap(63, 63, 63))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 929, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,8 +179,8 @@ public class TelaPricipal extends javax.swing.JFrame implements Serializable {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(reiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(enviar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                   .addComponent(reiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(enviar, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                     //   .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -295,10 +309,10 @@ public class TelaPricipal extends javax.swing.JFrame implements Serializable {
         //j//ComboBox1.addItem("oi");
         //jComboBox1.addItem("o11i");
         //jComboBox1.removeAllItems();
-        //jComboBox1.setBounds(30, 660,500, 100);
+        //enviar.setBounds(1, 660,500, 100);
         //jComboBox1.setFont(new java.awt.Font("SansSerif", 0, 24));
         //System.out.println(jComboBox1);
-        //jPanel1.add(jComboBox1);
+        //jPanel4.add(enviar);
         
         
 
@@ -529,4 +543,5 @@ public class TelaPricipal extends javax.swing.JFrame implements Serializable {
     public void setVidaBar3(javax.swing.JLabel vidaBar3) {
         this.vidaBar3 = vidaBar3;
     }
+
 }

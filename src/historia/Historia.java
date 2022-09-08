@@ -1,8 +1,9 @@
 ﻿package historia;
 
 import java.io.Serializable;
+import java.lang.reflect.Type;
 
-public class Historia implements Serializable {
+public class Historia implements Serializable, Type {
 
     private static final long serialVersionUID = 1L;
     private String nome;

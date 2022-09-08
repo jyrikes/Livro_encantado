@@ -35,7 +35,7 @@ public class CarregadorDoTexto {
     TelaPricipal tela;
      Scanner scam;
      public static Capitulo final3;
-     public static Capitulo raiz;
+     public  Capitulo raiz;
     
    
 
@@ -60,18 +60,19 @@ public class CarregadorDoTexto {
     public void carregar() throws IOException{
 
 
-    LeitorObjetos ler = new LeitorObjetos();
-    HashMap<String,Personagem> personagens = ler.lerPersonagensMap("rsc\\JsonFiles\\JsonPersonagens.json");
+        LeitorObjetos ler = new LeitorObjetos();
+        HashMap<String,Personagem> personagens = ler.lerPersonagensMap("rsc\\JsonFiles\\JsonPersonagens.json");
       
-HashMap<String, Capitulo> capitulos = ler.lerCapitulosMap("rsc\\JsonFiles\\JsonCapitulos.json", "rsc\\JsonFiles\\JsonEscolhas.json",personagens,tela);
+        HashMap<String, Capitulo> capitulos = ler.lerCapitulosMap("rsc\\JsonFiles\\JsonCapitulos.json", "rsc\\JsonFiles\\JsonEscolhas.json",personagens,tela);
    
   
 
-       Personagem protagnista = personagens.get("Protagonista");
-       protagnista.setComponentesVisuais(tela.getVidaBar1(), tela.getEnergiaBar1(),tela.getNome3());
-       Personagem antagonista = new Personagem("Antagonista", 2);
-       antagonista.setComponentesVisuais(tela.getVidaBar3(), tela.getEnergiaBar3(), tela.getNome4());
+        Personagem protagnista = personagens.get("Protagonista");
+        protagnista.setComponentesVisuais(tela.getVidaBar1(), tela.getEnergiaBar1(),tela.getNome3());
+        Personagem antagonista = new Personagem("Antagonista", 2);
+        antagonista.setComponentesVisuais(tela.getVidaBar3(), tela.getEnergiaBar3(), tela.getNome4());
 
+        String nomeRaiz = ler.lerNomeCapitulo("rsc\\JsonFiles\\loads\\loadCapitulo.json");
 
       
 
@@ -80,23 +81,12 @@ HashMap<String, Capitulo> capitulos = ler.lerCapitulosMap("rsc\\JsonFiles\\JsonC
 
 
 
-     raiz = capitulos.get("Capitulo 1");
-          
-         
-      //Escritor escritor = new Escritor();
-      //escritor.escreverEscolha("rsc\\JsonFiles\\JsonEscolhas.json", escolhasList);
-      
-          
-      
-      
-      
-     
-    
-    raiz.displayCapitulo(raiz.getPersonagem().getBarEnergia(),raiz.getPersonagem().getBarVida());
+     raiz = capitulos.get(nomeRaiz);
+     raiz.displayCapitulo(raiz.getPersonagem().getBarEnergia(),raiz.getPersonagem().getBarVida());
 
 
          
-          System.out.println("continuo");
+        
           
     
     }

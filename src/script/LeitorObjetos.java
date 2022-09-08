@@ -125,4 +125,34 @@ public class LeitorObjetos {
 
     }
 
+    String  lerNomeCapitulo(String caminhoArquivo) throws IOException {
+        
+        String nomeCapitulo;
+      
+
+        try {
+
+            Gson json = new GsonBuilder().setPrettyPrinting().create();
+            FileReader filereader = new FileReader(caminhoArquivo);
+
+            java.lang.reflect.Type tipoLista = new TypeToken<LinkedList<Historia>>() {
+            }.getType();
+            LinkedList<Historia> historia = json.fromJson(filereader, tipoLista);
+            
+           
+               nomeCapitulo = historia.get(0).getNome();
+               filereader.close();
+               return nomeCapitulo;
+            
+
+        } catch (FileNotFoundException e) {
+        
+            e.printStackTrace();
+        }
+        return null;
+
+       
+
+    }
+
 }
