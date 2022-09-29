@@ -1,11 +1,11 @@
 [{
   "escolha": "SIM",
-  "nomeCapituloAtual": "Capitulo 1",
+  "nomeCapituloAtual": "O inicio da Jornada",
   "nomeCapituloEscolhido": "Primeiro Sim",
   "idEcolha": "1"
 },{
   "escolha": "NÃO",
-  "nomeCapituloAtual": "Capitulo 1",
+  "nomeCapituloAtual":"O inicio da Jornada",
   "nomeCapituloEscolhido": "PrimeiroNao",
   "idEcolha": "2"
 },{

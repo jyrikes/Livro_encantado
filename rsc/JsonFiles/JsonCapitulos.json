@@ -1,16 +1,19 @@
 [{
-  "nome": "Capitulo 1",
+  "nome": "O inicio da Jornada",
   "texto": "█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\n█---╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗--█\n█---║║║╠─║─║─║║║║║╠─--█\n█---╚╩╝╚╝╚╝╚╝╚╝╩─╩╚╝--█\n█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\n.........\n                     ............\n          .............\nTerra de Nor 2000 anos depois da Era de Vemptor ......\n\n                       O livro do tempo repousava sobre\n                         a proteção da árvore sagrada ,\n                            quando suas páginas correram em direção\n                     as planícies do sul .....\n        2020 do tempo comum ....\n                            O despertador toca\n\n                          Acordar?\n",
   "altVida": 0,
   "altEnergia": 0,
-  "nomePersonagem": "Protagonista"
+  "nomePersonagem": "Protagonista",
+  "imagem": "a"
 },{
   "nome": "Primeiro Sim",
   "texto": "        ╔══╗\n         ║██║          ║(O)║♫ ♪ ♫ ♪          ╚══╝\n\" +\n         ▄ █ ▄ █ ▄ ▄ █ ▄ █ ▄ █\n         \"Min- - - - - - - - - - - -●Max\\\n\n---------------------------------------------\nVocê acabou de acordar um pouco sonolento vai\npara o banheiro escovar os dentes , você repara em algo\nesquisito na mesa de jantar .\n\nVocê olha para fora do quarto e vê um livro estranho\nvocê vai pegar o livro ? )\n",
   "altVida": 0,
   "altEnergia": 0,
-  "nomePersonagem": "Protagonista"
-},{
+  "nomePersonagem": "Protagonista",
+  "imagem":"a"
+}
+,{
   "nome": "PrimeiroNao",
   "texto": "\n.............................................\nVocê escuta barulhos muito altos dentro da sua própria\nmente , você começa a ver algumas imagens em delírio!!\nPor isso você sente que está perdendo vida !\n\nCésar algusto o imperador precisa de UMA casa ,\nvocê ficou preso num sono profundo ,\n\ndecifre a senha pra despertar !\n\nDICA: Tó tfj rvf obeb tfj ! Tpv p bvups !\n",
   "altVida": -1,
