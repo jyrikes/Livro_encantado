@@ -9,7 +9,7 @@ public class Pessoa implements Serializable {
   private int vida = 3;
   private int energia = 3;
   private int id;
-  private boolean alive;
+  private boolean alive = true;
 
   public String getNome() {
     return nome;
@@ -55,6 +55,17 @@ public class Pessoa implements Serializable {
 
   public void setAlive(boolean alive) {
     this.alive = alive;
+  }
+
+  public boolean temEnergia() {
+    boolean temEnergia;
+    if (this.getEnergia() > 0) {
+      temEnergia = true;
+    } else {
+      temEnergia = false;
+    }
+    return temEnergia;
+   
   }
 
 }

@@ -1,0 +1,49 @@
+﻿*{
+dark-primary-color: #020A65;
+default-primary-color: #071A8C;
+text-primary-color: #212121;
+light-primary-color: #F5F5F5;
+accent-color: #607D8B;
+primary-text-color: #212121;
+secondary-text-color: #757575;
+divider-color: #BDBDBD; 
+}
+.root{
+  -fx-background-color: dark-primary-color;
+}
+.button{
+  -fx-background-color :dark-primary-color;
+  -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+  -fx-text-fill: #fffefe;
+  -fx-font-size: 24pt;
+  
+}
+.button:hover{
+  -fx-background-color :#002c4d;
+  -fx-background-radius: 20 20 20 20;
+}
+.button:pressed{
+  -fx-background-color: dark-primary-color;
+}
+.label{
+  -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+  -fx-text-fill: #fffefe;
+  -fx-font-size: 24pt;
+  
+
+}
+.barEnergia{
+ 
+  -fx-text-fill: #f7f702;
+
+}
+.barVida{
+  -fx-text-fill: #f70202;
+}
+.barras{
+  -fx-background-color :#002c4d77;
+  -fx-background-radius: 20 20 20 20;
+  
+}
+
+

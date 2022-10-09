@@ -19,11 +19,11 @@ import historia.Historia;
 import historia.Imagem;
 import historia.Personagem;
 import historia.Pessoa;
-import telas.TelaPricipal;
+
 
 public class LeitorObjetos {
 
-    HashMap<String, Personagem> lerPersonagensMap(String caminhoArquivo) throws IOException {
+    public HashMap<String, Personagem> lerPersonagensMap(String caminhoArquivo) throws IOException {
         HashMap<String, Personagem> persongens = new HashMap<>();
 
         try {
@@ -51,7 +51,7 @@ public class LeitorObjetos {
     }
 
     HashMap<String, Capitulo> lerCapitulosMap(String caminhoArquivo, String caminhoEscolhas,
-            HashMap<String, Personagem> persongens, TelaPricipal tela) throws IOException {
+            HashMap<String, Personagem> persongens) throws IOException {
 
         HashMap<String, Capitulo> capitulos = new HashMap<>();
         ArrayList<Capitulo> caps = new ArrayList<>();
@@ -65,7 +65,7 @@ public class LeitorObjetos {
             HashMap<String, ConteudoEscolhas> conteudos = lerConteudoEscolhasMap(caminhoEscolhas);
             for (Historia h : historia) {
 
-                Capitulo cap = new Capitulo(h, persongens.get(h.getNomePersonagem()), tela);
+                Capitulo cap = new Capitulo(h, persongens.get(h.getNomePersonagem()));
                 capitulos.put(h.getNome(), cap);
                 caps.add(cap);
 
@@ -121,7 +121,7 @@ public class LeitorObjetos {
 
     }
 
-    String lerNomeCapitulo(String caminhoArquivo) throws IOException {
+    public String lerNomeCapitulo(String caminhoArquivo) throws IOException {
 
         String nomeCapitulo;
 
@@ -156,14 +156,14 @@ public class LeitorObjetos {
           Gson json = new GsonBuilder().setPrettyPrinting().create();
           FileReader filereader = new FileReader(caminhoArquivo);
 
-          java.lang.reflect.Type tipoLista = new TypeToken<LinkedList<Imagem>>() {
+          java.lang.reflect.Type tipoLista = new TypeToken<LinkedList<Historia>>() {
           }.getType();
-          LinkedList<Imagem> imagems = json.fromJson(filereader, tipoLista);
-          for (Imagem i : imagems) {
-            Imagem imagemLida = new Imagem(i.getImagem());
+          LinkedList<Historia> imagems = json.fromJson(filereader, tipoLista);
+          for (Historia h : imagems) {
+            Imagem imagemLida = new Imagem(h);
 
               
-              img.put(i.getNome(), imagemLida);
+              img.put(h.getNome(), imagemLida);
 
           }
 

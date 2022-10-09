@@ -11,36 +11,43 @@
 },{
   "escolha": "SIM",
   "nomeCapituloAtual": "Primeiro Sim",
-  "nomeCapituloEscolhido": "Capitulo 3",
+  "nomeCapituloEscolhido": "Segundo Sim",
   "idEcolha": "3"
 },{
-  "escolha": "Não",
+  "escolha": "NÃO",
   "nomeCapituloAtual": "Primeiro Sim",
   "nomeCapituloEscolhido": "Final 5",
   "idEcolha": "4"
 },{
-  "escolha": "sócrates",
+  "escolha": "SÓCRATES",
   "nomeCapituloAtual": "PrimeiroNao",
   "nomeCapituloEscolhido": "PrimeiroFinal",
   "idEcolha": "10"
 },{
-  "escolha": "aristoteles",
+  "escolha": "ARISTOTALES",
   "nomeCapituloAtual": "PrimeiroNao",
-  "nomeCapituloEscolhido": "Terceiro final",
+  "nomeCapituloEscolhido": "Final 5",
   "idEcolha": "11"
 },{
-  "escolha": "Alemanha",
-  "nomeCapituloAtual": "Capitulo 3",
+  "escolha": "PLATÃO",
+  "nomeCapituloAtual": "PrimeiroNao",
+  "nomeCapituloEscolhido": "Final 5",
+  "idEcolha": "12"
+
+}
+,{
+  "escolha": "ALEMANHA",
+  "nomeCapituloAtual": "Segundo Sim",
   "nomeCapituloEscolhido": "Chamado",
   "idEcolha": "5"
 },{
-  "escolha": "itália",
-  "nomeCapituloAtual": "Capitulo 3",
+  "escolha": "ITÁLIA",
+  "nomeCapituloAtual": "Segundo Sim",
   "nomeCapituloEscolhido": "PrimeiroFinal",
   "idEcolha": "6"
 },{
-  "escolha": "Brasil",
-  "nomeCapituloAtual": "Capitulo 3",
+  "escolha": "BRASIL",
+  "nomeCapituloAtual": "Segundo Sim",
   "nomeCapituloEscolhido": "Chamado",
   "idEcolha": "7"
 },{
@@ -53,4 +60,37 @@
   "nomeCapituloAtual": "Chamado",
   "nomeCapituloEscolhido": "4º Final",
   "idEcolha": "9"
-}]
+  
+},{
+  "escolha": "A IDADE",
+  "nomeCapituloAtual": "Charada 1",
+  "nomeCapituloEscolhido": "Charada 2",
+  "idEcolha": "14"
+
+},
+{
+  "escolha": "AS IDÉIAS",
+  "nomeCapituloAtual": "Charada 1",
+  "nomeCapituloEscolhido": "Resposta errada",
+  "idEcolha": "15"
+},
+{
+  "escolha": "CONTINUAR",
+  "nomeCapituloAtual": "Resposta errada",
+  "nomeCapituloEscolhido": "Charada 2",
+  "idEcolha": "16"
+},
+{
+  "escolha": "PENSAMENTOS",
+  "nomeCapituloAtual": "Charada 2" ,
+  "nomeCapituloEscolhido": "Resposta errada",
+  "idEcolha": "17"
+},
+{
+  "escolha": "O ALFABETO",
+  "nomeCapituloAtual": "Charada 2" ,
+  "nomeCapituloEscolhido": "Segundo final",
+  "idEcolha": "18"
+}
+
+]

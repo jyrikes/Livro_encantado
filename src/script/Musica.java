@@ -7,7 +7,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.SwingUtilities;
 
-class Musica{
+public class Musica{
   private String URL;
   public Musica(String URL){
     this.URL = URL;

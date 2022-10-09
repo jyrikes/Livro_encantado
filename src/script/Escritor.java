@@ -15,7 +15,7 @@ import historia.Personagem;
 
 public class Escritor {
   public void escreverCapitulo(String caminhoArquivo, Capitulo atual) throws IOException {
-    Historia[] historias = { atual.historia };
+    Historia[] historias = { atual.getHistoria() };
     try {
       Gson json = new GsonBuilder().setPrettyPrinting().create();
       FileWriter filewriter = new FileWriter(caminhoArquivo);
@@ -34,7 +34,7 @@ public class Escritor {
   public void escreverCapitulos(String caminhoArquivo, ArrayList<Capitulo> lis) throws IOException {
     ArrayList<Historia> his = new ArrayList<>();
     for (Capitulo cap : lis) {
-      his.add(cap.historia);
+      his.add(cap.getHistoria());
     }
     try {
       Gson json = new GsonBuilder().setPrettyPrinting().create();
@@ -55,7 +55,7 @@ public class Escritor {
     try {
       Gson json = new GsonBuilder().setPrettyPrinting().create();
       FileWriter filewriter = new FileWriter(caminhoArquivo);
-      String ca = json.toJson(personagem.p);
+      String ca = json.toJson(personagem.pessoa);
       filewriter.write(ca);
       filewriter.flush();
       filewriter.close();

@@ -11,7 +11,8 @@ public class Historia implements Serializable, Type {
   protected int altVida;
   protected int altEnergia;
   protected String nomePersonagem;
-  //public String imagem;
+  protected String imagem;
+  
 
   public String getNomePersonagem() {
     return nomePersonagem;
@@ -51,6 +52,12 @@ public class Historia implements Serializable, Type {
 
   public void setAltEnergia(int altEnergia) {
     this.altEnergia = altEnergia;
+  }
+  public String getImagem() {
+    return imagem;
+  }
+  public void setImagem(String imagem) {
+    this.imagem = imagem;
   }
 
 }
